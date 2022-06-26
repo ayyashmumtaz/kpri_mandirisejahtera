@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>SB Admin 2 - Dashboard</title>
+    <title>KPRI Sejahtera Mandiri</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css')?>" rel="stylesheet" type="text/css">
