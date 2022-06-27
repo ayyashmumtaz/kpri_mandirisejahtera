@@ -17,8 +17,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= site_url('')?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Beranda</span></a>
             </li>
@@ -42,7 +42,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Home/anggota');?>">Anggota</a>
-                        <a class="collapse-item" href="cards.html">Pengurus</a>
+                        <a class="collapse-item" href="<?= site_url('Home/pengurus');?>">Pengurus</a>
+                        <a class="collapse-item" href="<?= site_url('Home/sekolah');?>">Sekolah</a>
                     </div>
                 </div>
             </li>
