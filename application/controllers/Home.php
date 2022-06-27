@@ -11,6 +11,14 @@ class Home extends CI_Controller {
 		$this->load->view('_partials/footer');
 	}
 
+	public function anggota()
+	{
+		$this->load->view('_partials/header');
+		$this->load->view('_partials/navbar');
+		$this->load->view('anggota.php');
+		$this->load->view('_partials/footer');
+	}
+
 }
 
 /* End of file Home.php */
