@@ -29,7 +29,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                DATA
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -58,8 +58,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Input Data Simpanan</a>
-                        <a class="collapse-item" href="utilities-animation.html">Laporan Simpanan</a>
+                        <a class="collapse-item" href="<?= site_url('Simpanan/input');?>">Input Data Simpanan</a>
+                        <a class="collapse-item" href="<?= site_url('Simpanan/data');?>">Data Simpanan</a>
                     </div>
                 </div>
             </li>
@@ -73,60 +73,33 @@
                 <div id="angsuran" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Angsuran</a>
+                        <a class="collapse-item" href="<?= site_url('Angsuran/data');?>">Laporan Angsuran</a>
                     </div>
                 </div>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+   <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#download"
+                    aria-expanded="true" aria-controls="download">
+                    <i class="fas fa-fw fa-download"></i>
+                    <span>Export</span>
+                </a>
+                <div id="download" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= site_url('Laporan/anggota');?>">Data Tagihan Peranggota</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/sekolah');?>">Data Tagihan Persekolah</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Rekap Tagihan Instansi</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Rekap Tagihan Instansi</a>
 
+                    </div>
+                </div>
+            </li>
            
             <!-- Sidebar Message -->
            
@@ -167,7 +140,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline  small">Douglas McGee</span>
+                              <button class="btn btn-sm btn-primary">
+                                  <?= $this->session->userdata('nama');?>
+                              </button> 
                                 
                             </a>
                             <!-- Dropdown - User Information -->

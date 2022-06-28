@@ -6,6 +6,10 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+	$status = $this->session->userdata('role');
+    if(!isset($status)){
+      redirect(site_url("Login"));
+    }
 		$this->load->model('Model_home');
 	}
 
@@ -38,7 +42,7 @@ class Home extends CI_Controller {
 
 	public function sekolah()
 	{
-		$data['anggota'] = $this->Model_home->getAnggota()->result();
+		$data['anggota'] = $this->Model_home->getSekolah()->result();
 		$this->load->view('_partials/header');
 		$this->load->view('_partials/navbar');
 		$this->load->view('sekolah.php', $data);

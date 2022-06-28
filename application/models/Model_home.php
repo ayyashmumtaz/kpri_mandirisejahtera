@@ -19,6 +19,14 @@ public function getPengurus()
     return $query;
 }
 
+public function getSekolah()
+	{
+	$this->db->select('*');
+    $this->db->from('sekolah');
+    $query = $this->db->get();
+    return $query;
+}
+
 }
 
 /* End of file Model_home.php */

@@ -7,11 +7,13 @@ class Login extends CI_Controller{
 		parent::__construct();	
 		 
 		$this->load->model('Login_model');
-		
-
 	}
 
 	function index(){
+		$status = $this->session->userdata('role');
+		if(isset($status)){
+      redirect(site_url("Home"));
+    }
 		$status = $this->session->userdata('role');
 		$this->load->view('_partials/header');
 		$this->load->view('login');
@@ -38,10 +40,10 @@ class Login extends CI_Controller{
 	if ($status == 1) 
 		 {
 			$this->session->set_flashdata('login_berhasil', ' ');
-			redirect(base_url("Beranda"));
+			redirect(site_url("Home"));
 		}elseif ($status == 2) {
 			$this->session->set_flashdata('login_berhasil', ' ');
-			redirect(base_url("Spk/a3"));
+			redirect(site_url("User"));
 		}
 	}
 }
@@ -49,7 +51,7 @@ class Login extends CI_Controller{
 
 	function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('Login'));
+		redirect(site_url('Login'));
 	}
 }
 

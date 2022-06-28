@@ -43,7 +43,7 @@ Swal.fire({
                                     </div>
                                         <br>    
                                             
-                                    <form class="user" action="<?php echo base_url('login/aksi_login'); ?>" method="post">
+                                    <form class="user" action="<?php echo site_url('login/aksi_login'); ?>" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 name="username" aria-describedby="emailHelp"

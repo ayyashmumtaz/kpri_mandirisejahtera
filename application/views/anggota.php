@@ -1,6 +1,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
-    $('#example').DataTable();
+    $('#s').DataTable({
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true
+    });
 });
 </script>
 
@@ -9,7 +14,7 @@
     <h3>Anggota Koperasi</h3>
     <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Anggota/tambah');?>">+ Tambah Anggota</a>
 
-    <table id="example" class="display" style="width:100%">
+    <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>
                 <th>ID Anggota</th>

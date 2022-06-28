@@ -1,26 +1,26 @@
 <script type="text/javascript">
     $(document).ready(function () {
-    $('#example').DataTable({
-    responsive: true
-});
-
+    $('#s').DataTable({
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true
+    });
 });
 </script>
 
 
 <div class="container">
-    <h3>Anggota Pengurus</h3>
-    <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Anggota/tambah');?>">+ Tambah Pengurus</a>
+    <h3>Pengurus Koperasi</h3>
+    <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Anggota/tambah');?>">+ Tambah Anggota</a>
 
-    <table id="example" class="display" style="width:100%">
+    <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>
-                <th>ID Anggota</th>
-                <th>NIK</th>
-                <th>Sekolah</th>
-              
-                <th>Nama Anggota</th>
-                <th>Tanggal Daftar</th>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Username</th>
+                <th>Password</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
@@ -31,19 +31,18 @@
             ?>
             <tr>
               
-                <td><?= $b->id_anggota?></td>
-                <td><?= $b->nik?></td>
-                <td><?= $b->id_sekolah?></td>
-                <td><?=$b->nama_anggota?></td>
-                <td><?=$b->tgl_daftar?></td>
+                <td><?= $b->id_pengurus?></td>
+                <td><?= $b->nama?></td>
+                <td><?= $b->username?></td>
+                <td><?=$b->password?></td>
                 <td><?php
-                $status = $b->status;
+                $status = $b->role;
                  switch ($status) {
-                  case '0':
-                    echo '<button class="btn btn-sm btn-danger">TIDAK AKTIF</button>';
+                  case '2':
+                    echo '<button class="btn btn-sm btn-danger">Admin</button>';
                     break;
                   case '1':
-                    echo '<button class="btn btn-sm btn-success">AKTIF</button>';
+                    echo '<button class="btn btn-sm btn-primary">Superadmin</button>';
                     break;
                   
                   default:
@@ -53,7 +52,7 @@
                 
                   <td>
                   
-                  <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= base_url('Anggota/edit/'). $b->id_anggota;?>">Edit</a>
+                  <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= base_url('Anggota/edit/'). $b->id_pengurus;?>">Edit</a>
                       </td>
                        
         <?php }?>
