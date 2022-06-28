@@ -26,6 +26,26 @@ class Home extends CI_Controller {
 		$this->load->view('_partials/footer');
 	}
 
+	public function pengurus()
+	{
+		$data['anggota'] = $this->Model_home->getPengurus()->result();
+		$this->load->view('_partials/header');
+		$this->load->view('_partials/navbar');
+		$this->load->view('pengurus.php', $data);
+		$this->load->view('_partials/footer');
+	
+	}
+
+	public function sekolah()
+	{
+		$data['anggota'] = $this->Model_home->getAnggota()->result();
+		$this->load->view('_partials/header');
+		$this->load->view('_partials/navbar');
+		$this->load->view('sekolah.php', $data);
+		$this->load->view('_partials/footer');
+	
+	}
+
 }
 
 /* End of file Home.php */

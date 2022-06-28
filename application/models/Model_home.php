@@ -11,6 +11,14 @@ class Model_home extends CI_Model {
     return $query;
 }
 
+public function getPengurus()
+	{
+	$this->db->select('*');
+    $this->db->from('pengurus');
+    $query = $this->db->get();
+    return $query;
+}
+
 }
 
 /* End of file Model_home.php */
