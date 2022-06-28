@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login_model extends CI_Model {
 
 	function cek_login($data){		
-		$query = $this->db->get_where('user', $data);
+		$query = $this->db->get_where('pengurus', $data);
 	return $query;
 	}	
 	
@@ -13,7 +13,7 @@ class Login_model extends CI_Model {
   	$name = $this->session->userdata('username');
  		$this->db->select('*');
  	 	$this->db->where('username', $name);
-    $this->db->from('user');  
+    $this->db->from('pengurus');  
     $query = $this->db->get();
     return $query->result_array();
 
