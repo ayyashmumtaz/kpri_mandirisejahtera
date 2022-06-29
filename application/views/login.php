@@ -1,23 +1,7 @@
 
-               <?php if($this->session->flashdata('login_gagal')): ?>
-             <script type="text/javascript">
-               let timerInterval
-Swal.fire({
-  title: 'Gagal!',
-  html: 'Username atau password salah!',
-  icon: 'danger',
-  timer: 1500,
-  
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-
-})
-            </script>
+               <?php if($this->session->flashdata('gagal')): ?>
+           
+             <script>alert("Username atau password salah!")</script> 
                   
            
         <?php endif ?>

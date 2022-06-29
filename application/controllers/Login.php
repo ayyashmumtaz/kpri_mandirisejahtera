@@ -45,7 +45,11 @@ class Login extends CI_Controller{
 			$this->session->set_flashdata('login_berhasil', ' ');
 			redirect(site_url("User"));
 		}
-	}
+	}else{
+
+			$this->session->set_flashdata('gagal', ' ');
+			redirect(site_url("Login"));
+		}
 }
 	
 

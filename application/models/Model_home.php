@@ -27,6 +27,11 @@ public function getSekolah()
     return $query;
 }
 
+function getDataAnggota()
+	{
+   return $this->db->get('anggota')->result_array();
+	}
+
 }
 
 /* End of file Model_home.php */
