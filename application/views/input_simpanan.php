@@ -42,15 +42,6 @@ Swal.fire({
         </div>
       </div>
       
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="last">BULAN</label>
-          <select class="form-control" name="bulan">
-            <option selected disabled>-- PILIH BULAN --</option>
-                  <option value="JANUARI">JANUARI</option>
-                </select>
-        </div>
-      </div>
 
       <div class="col-md-5">
         <div class="form-group">

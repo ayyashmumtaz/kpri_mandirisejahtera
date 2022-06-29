@@ -12,7 +12,7 @@
 
 <div class="container">
     <h3>Pengurus Koperasi</h3>
-    <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Anggota/tambah');?>">+ Tambah Anggota</a>
+    <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Pengurus/tambah');?>">+ Tambah Anggota</a>
 
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
