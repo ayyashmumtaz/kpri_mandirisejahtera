@@ -48,6 +48,13 @@ class Anggota extends CI_Controller {
 		redirect('Anggota/tambah');
 	}
 
+	function hapus($id){
+		$where = array('id_anggota' => $id);
+		$this->Model_home->hapus_data($where,'anggota');
+		$this->session->set_flashdata('hapusBerhasil', ' ');
+		redirect('Anggota');
+	}
+
 }
 
 /* End of file Anggota.php */

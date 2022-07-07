@@ -9,6 +9,28 @@
 });
 </script>
 
+               <?php if($this->session->flashdata('hapusBerhasil')): ?>
+             <script type="text/javascript">
+               let timerInterval
+Swal.fire({
+  title: 'Berhasil Hapus!',
+  html: 'Data Berhasil dihapus!',
+  icon: 'success',
+  timer: 1500,
+  
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+
+})
+            </script>
+                    <?= $this->session->flashdata('hapusBerhasil') ?>
+           
+        <?php endif ?>
 
 <div class="container">
     <h3>Anggota Koperasi</h3>
@@ -40,10 +62,10 @@
                 $status = $b->status;
                  switch ($status) {
                   case '0':
-                    echo '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalTYakin">TIDAK AKTIF</button>';
+                    echo '<button class="btn btn-sm btn-danger">TIDAK AKTIF</button>';
                     break;
                   case '1':
-                    echo '<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalYakin">AKTIF</button>';
+                    echo '<button class="btn btn-sm btn-success">AKTIF</button>';
                     break;
                   
                   default:
@@ -53,8 +75,8 @@
                 
                   <td>
                   
-                  <a class="btn btn-sm btn-primary"  href="<?= base_url('Anggota/edit/'). $b->id_anggota;?>">Edit</a>
-                  <a class="btn btn-sm btn-danger" href="<?= base_url('Anggota/hapus/'). $b->id_anggota;?>">Hapus</a>
+                  <a class="btn btn-sm btn-primary"  href="<?= site_url('Anggota/edit/'). $b->id_anggota;?>">Edit</a>
+                  <a class="btn btn-sm btn-danger"  href="<?= site_url('Anggota/hapus/'). $b->id_anggota;?>">Hapus</a>
                       </td>
                        
         <?php }?>
@@ -62,39 +84,22 @@
        </table>
 </div>
 
-<div class="modal fade" id="modalYakin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ubah Status Anggota?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Pilih "Ya" Jika kamu ingin menonaktifkan status anggota.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('Anggota/aktifkan');?>">Ya</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-<div class="modal fade" id="modalTYakin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+    <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ubah Status Anggota?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Anggota?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih "Ya" Jika kamu ingin mengaktifkan status anggota.</div>
+                <div class="modal-body">Pilih "Hapus" Jika kamu ingin menghapus anggota <?= $b->nama_anggota?>.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('Anggota/aktifkan');?>">Ya</a>
+                    <a class="btn btn-primary" href="<?= site_url('Anggota/hapus/'). $b->id_anggota;?>">Hapus</a>
                 </div>
             </div>
         </div>

@@ -75,6 +75,11 @@ public function totalAnggotaTAktif()
     $this->db->insert($table,$data);
   }
 
+  function hapus_data($where,$table){
+    $this->db->where($where);
+    $this->db->delete($table);
+  }
+
 }
 
 /* End of file Model_home.php */

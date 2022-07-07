@@ -11,7 +11,7 @@
 
 
 <div class="container">
-    <h3>Anggota Koperasi</h3>
+    <h3>Data Simpanan</h3>
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>
@@ -34,7 +34,6 @@
                 <td><?=$b->nama_anggota?></td>
                 <td>
                 <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Simpanan/lihat/'). $b->id_anggota;?>">Lihat Data</a>
-                  <a class="btn btn-sm btn-warning" style="margin-bottom: 2%;" href="<?= base_url('Anggota/edit/'). $b->id_anggota;?>">Edit</a>
                       </td>
                        
         <?php }?>
