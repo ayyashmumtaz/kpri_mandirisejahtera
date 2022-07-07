@@ -43,7 +43,7 @@
                     echo '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalTYakin">TIDAK AKTIF</button>';
                     break;
                   case '1':
-                    echo '<button class="btn btn-sm btn-success data-toggle="modal" data-target="#modalYakin">AKTIF</button>';
+                    echo '<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalYakin">AKTIF</button>';
                     break;
                   
                   default:
