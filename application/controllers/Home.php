@@ -15,9 +15,11 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$data['totalAnggota'] = $this->Model_home->totalAnggotaAktif();
+		$data['totalAnggotaT'] = $this->Model_home->totalAnggotaTAktif();
 		$this->load->view('_partials/header');
 		$this->load->view('_partials/navbar');
-		$this->load->view('beranda.php');
+		$this->load->view('beranda.php', $data);
 		$this->load->view('_partials/footer');
 	}
 

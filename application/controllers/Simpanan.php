@@ -23,6 +23,25 @@ class Simpanan extends CI_Controller {
     $this->load->view('_partials/footer');
 	}
 
+	public function tambah_tabungan()
+	{
+		// code...
+	}
+
+	public function data()
+	{
+	$data['anggota'] = $this->Model_home->getAnggota()->result();
+	$this->load->view('_partials/header');
+    $this->load->view('_partials/navbar');
+    $this->load->view('data_simpanan', $data);
+    $this->load->view('_partials/footer');
+	}
+
+	public function viewAnggota($id)
+	{
+		// code...
+	}
+
 }
 
 /* End of file Simpanan.php */
