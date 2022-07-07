@@ -33,7 +33,7 @@
                 <td><?= $b->id_sekolah?></td>
                 <td><?=$b->nama_anggota?></td>
                 <td>
-                <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= base_url('Anggota/edit/'). $b->id_anggota;?>">Lihat Data</a>
+                <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Simpanan/lihat/'). $b->id_anggota;?>">Lihat Data</a>
                   <a class="btn btn-sm btn-warning" style="margin-bottom: 2%;" href="<?= base_url('Anggota/edit/'). $b->id_anggota;?>">Edit</a>
                       </td>
                        
