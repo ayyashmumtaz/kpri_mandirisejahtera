@@ -40,10 +40,10 @@
                 $status = $b->status;
                  switch ($status) {
                   case '0':
-                    echo '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalYakin">TIDAK AKTIF</button>';
+                    echo '<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalTYakin">TIDAK AKTIF</button>';
                     break;
                   case '1':
-                    echo '<button class="btn btn-sm btn-success">AKTIF</button>';
+                    echo '<button class="btn btn-sm btn-success data-toggle="modal" data-target="#modalYakin">AKTIF</button>';
                     break;
                   
                   default:
@@ -72,7 +72,26 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih "Ya" Jika kamu ingin mengubah status anggota.</div>
+                <div class="modal-body">Pilih "Ya" Jika kamu ingin menonaktifkan status anggota.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="<?= base_url('Anggota/aktifkan');?>">Ya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="modalTYakin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ubah Status Anggota?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Pilih "Ya" Jika kamu ingin mengaktifkan status anggota.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="<?= base_url('Anggota/aktifkan');?>">Ya</a>
