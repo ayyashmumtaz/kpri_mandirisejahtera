@@ -91,9 +91,8 @@ Swal.fire({
         <div class="form-group">
           <label for="last">Jabatan</label>
          <select name="role">
-            <option selected disabled>-- PILIH JABATAN --</option>
                   <option value="admin">Pengurus</option>
-                  <option value="user">Anggota</option>
+                  <option value="user" selected>Anggota</option>
                 </select>
          </select>
         </div>
