@@ -41,9 +41,9 @@ Swal.fire({
             <tr>
                 <th>ID Anggota</th>
                 <th>Sekolah</th>
-              
+                <th>NIK</th>
                 <th>Nama Anggota</th>
-                <th>Tanggal Daftar</th>
+                <th>Jabatan</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
@@ -55,9 +55,10 @@ Swal.fire({
             <tr>
               
                 <td><?= $b->id_anggota?></td>
-                <td><?= $b->id_sekolah?></td>
+                <td><?= $b->nama_sekolah?></td>
+                <td><?= $b->nik?></td>
                 <td><?=$b->nama_anggota?></td>
-                <td><?=$b->tgl_daftar?></td>
+                <td><?=$b->role?></td>
                 <td><?php
                 $status = $b->status;
                  switch ($status) {

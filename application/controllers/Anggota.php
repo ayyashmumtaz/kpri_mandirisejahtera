@@ -31,15 +31,21 @@ class Anggota extends CI_Controller {
 	{
 		$id = $this->input->post('id_anggota');
 		$nama = $this->input->post('nama_anggota');
+		$nik = $this->input->post('nik');
+		$password = $this->input->post('password');
 		$id_sekolah = $this->input->post('id_sekolah');
 		$tgl_daftar = $this->input->post('tgl_daftar');
+		$role = $this->input->post('role');
 		$status = 0;
 
 		$data = array(
 			'id_anggota' => $id,
 			'nama_anggota' => $nama,
+			'nik' => $nik,
+			'password' => $password,
 			'id_sekolah' => $id_sekolah,
-			'tgl_daftar'=> $tgl_daftar,
+			'tgl_daftar' => $tgl_daftar,
+			'role' => $role,
 			'status' => $status
 		);
 

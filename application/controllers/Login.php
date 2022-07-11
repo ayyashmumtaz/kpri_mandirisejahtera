@@ -23,7 +23,7 @@ class Login extends CI_Controller{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$data = array(
-			'username' => $username,
+			'nik' => $username,
 			'password' => $password
 			);
 	$hasil = $this->Login_model->cek_login($data);
@@ -31,22 +31,21 @@ class Login extends CI_Controller{
 
 		foreach ($hasil->result() as $sess) {
 		$sess_data['logged_in'] = 'Sudah Login';
-		$sess_data['nama'] = $sess->nama;
-		$sess_data['username'] = $sess->username;
+		$sess_data['nama_anggota'] = $sess->nama_anggota;
+		$sess_data['nik'] = $sess->nik;
 		$sess_data['role'] = $sess->role;
 		$this->session->set_userdata($sess_data);
 		}
 	$status = $this->session->userdata('role');
-	if ($status == 1) 
+		if ($status == "admin") 
 		 {
 			$this->session->set_flashdata('login_berhasil', ' ');
 			redirect(site_url("Home"));
-		}elseif ($status == 2) {
+		}elseif ($status == "user") {
 			$this->session->set_flashdata('login_berhasil', ' ');
 			redirect(site_url("User"));
 		}
 	}else{
-
 			$this->session->set_flashdata('gagal', ' ');
 			redirect(site_url("Login"));
 		}

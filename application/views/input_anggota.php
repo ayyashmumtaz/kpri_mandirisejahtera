@@ -66,10 +66,13 @@ Swal.fire({
           <label for="last">NAMA ANGGOTA</label>
           <input type="text" name="nama_anggota" class="form-control">
         </div>
-      
+
+
         
 
       </div>
+
+
  
          <div class="col-md-6">       
         <div class="form-group">
@@ -77,6 +80,30 @@ Swal.fire({
           <input class="form-control" type="text" name="alamat">
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="last">NIK</label>
+          <input type="text" name="nik" class="form-control">
+      </div>
+ </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="last">PASSWORD</label>
+          <input type="text" name="password" class="form-control">
+        </div>
+        </div>
+        <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Jabatan</label>
+         <select name="role">
+            <option selected disabled>-- PILIH JABATAN --</option>
+                  <option value="0">Pengurus</option>
+                  <option value="1">Anggota</option>
+                </select>
+         </select>
+        </div>
+        </div>
 
 
       </div>

@@ -7,6 +7,7 @@ class Model_home extends CI_Model {
 	{
 	$this->db->select('*');
     $this->db->from('anggota');
+    $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
     $query = $this->db->get();
     return $query;
 }

@@ -141,7 +141,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <button class="btn btn-sm btn-primary">
-                                  <?= $this->session->userdata('nama');?>
+                                  <?= $this->session->userdata('nama_anggota');?>
                               </button> 
                                 
                             </a>

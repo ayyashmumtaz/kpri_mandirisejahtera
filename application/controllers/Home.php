@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 	$status = $this->session->userdata('role');
-    if(!isset($status)){
+    if($status != "admin"){
       redirect(site_url("Login"));
     }
 		$this->load->model('Model_home');
