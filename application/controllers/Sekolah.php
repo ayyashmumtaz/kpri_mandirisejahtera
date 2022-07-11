@@ -41,14 +41,14 @@ class Sekolah extends CI_Controller {
 
 		$this->Model_home->input_data($data,'sekolah');
 		$this->session->set_flashdata('order_berhasil', ' ');
-		redirect('Anggota/tambah');
+		redirect('Sekolah/tambah');
 	}
 
 	function hapus($id){
 		$where = array('id' => $id);
 		$this->Model_home->hapus_data($where,'sekolah');
 		$this->session->set_flashdata('hapusBerhasil', ' ');
-		redirect('Anggota');
+		redirect('Sekolah');
 	}
 
 }
