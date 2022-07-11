@@ -74,12 +74,6 @@ Swal.fire({
 
 
  
-         <div class="col-md-6">       
-        <div class="form-group">
-          <label for="last">ALAMAT</label>
-          <input class="form-control" type="text" name="alamat">
-        </div>
-      </div>
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">NIK</label>
