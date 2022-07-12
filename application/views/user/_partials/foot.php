@@ -12,18 +12,18 @@
       </div>
     </div>
     <!-- All JavaScript Files-->
-    <script src="<?= base_url('js/bootstrap.bundle.min.js');?>"></script>
-    <script src="<?= base_url('js/jquery.min.js');?>"></script>
-    <script src="<?= base_url('js/waypoints.min.js');?>"></script>
-    <script src="<?= base_url('js/jquery.easing.min.js');?>"></script>
-    <script src="<?= base_url('js/owl.carousel.min.js');?>"></script>
-    <script src="<?= base_url('js/jquery.magnific-popup.min.js');?>"></script>
-    <script src="<?= base_url('js/jquery.counterup.min.js');?>"></script>
-    <script src="<?= base_url('js/jquery.countdown.min.js');?>"></script>
-    <script src="<?= base_url('js/jquery.passwordstrength.js');?>"></script>
-    <script src="<?= base_url('js/dark-mode-switch.js');?>"></script>
-    <script src="<?= base_url('js/no-internet.js');?>"></script>
-    <script src="<?= base_url('js/active.js');?>"></script>
-    <script src="<?= base_url('js/pwa.js');?>"></script>
+    <script src="<?= base_url('vendor/js/bootstrap.bundle.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/jquery.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/waypoints.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/jquery.easing.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/owl.carousel.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/jquery.magnific-popup.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/jquery.counterup.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/jquery.countdown.min.js');?>"></script>
+    <script src="<?= base_url('vendor/js/jquery.passwordstrength.js');?>"></script>
+    <script src="<?= base_url('vendor/js/dark-mode-switch.js');?>"></script>
+    <script src="<?= base_url('vendor/js/no-internet.js');?>"></script>
+    <script src="<?= base_url('vendor/js/active.js');?>"></script>
+    <script src="<?= base_url('vendor/js/pwa.js');?>"></script>
   </body>
 </html>
