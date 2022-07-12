@@ -30,7 +30,7 @@
             <tr>
               
                 <td><?= $b->id_anggota?></td>
-                <td><?= $b->id_sekolah?></td>
+                <td><?= $b->nama_sekolah?></td>
                 <td><?=$b->nama_anggota?></td>
                 <td>
                 <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Simpanan/lihat/'). $b->id_anggota;?>">Lihat Data</a>

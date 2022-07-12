@@ -25,7 +25,31 @@ class Simpanan extends CI_Controller {
 
 	public function tambah_tabungan()
 	{
-		// code...
+		$id_keuangan =	$this->input->post('id_keuangan');
+		$tgl_simpan =	$this->input->post('tgl_simpan');
+		$id_anggota =	$this->input->post('id_anggota');
+		$sim_pokok =	$this->input->post('sim_pokok');
+		$sim_wajib =	$this->input->post('sim_wajib');
+		$thr =	$this->input->post('thr');
+		$pendidikan =	$this->input->post('pendidikan');
+		$rekreasi =	$this->input->post('rekreasi');
+
+		$data = array(
+			'id_keuangan' => $id_keuangan,
+			'tgl_simpan' => $tgl_simpan,
+			'id_anggota' => $id_anggota,
+			'sim_pokok' => $sim_pokok,
+			'sim_wajib' => $sim_wajib,
+			'thr' => $thr,
+			'pendidikan' => $pendidikan,
+			'rekreasi' => $rekreasi
+		);
+
+
+		$this->Model_home->input_data($data, 'tabungan');
+		$this->session->set_flashdata('order_berhasil', ' ');
+		redirect('Simpanan/input');
+
 	}
 
 	public function data()
@@ -37,7 +61,7 @@ class Simpanan extends CI_Controller {
     $this->load->view('_partials/footer');
 	}
 
-	public function viewAnggota($id)
+	public function lihat($id)
 	{
 		// code...
 	}

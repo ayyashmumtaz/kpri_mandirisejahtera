@@ -81,6 +81,27 @@ public function totalAnggotaTAktif()
     $this->db->delete($table);
   }
 
+  public function getDataUser()
+  {
+    $name = $this->session->userdata('nik');
+ 	$this->db->select('*');
+ 	$this->db->where('nik', $name);
+    $this->db->from('anggota');  
+    $query = $this->db->get();
+    return $query->result_array();
+
+}
+
+public function getDataSimpananUser()
+{
+  $name = $this->session->userdata('id_anggota');
+  $this->db->select('*');
+  $this->db->where('id_anggota', $name);
+   $this->db->from('tabungan');  
+   $query = $this->db->get();
+   return $query->result_array();
+}
+
 }
 
 /* End of file Model_home.php */

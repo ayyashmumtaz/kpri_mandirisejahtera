@@ -3,8 +3,8 @@
              <script type="text/javascript">
                let timerInterval
 Swal.fire({
-  title: 'Order Berhasil!',
-  html: 'Order telah di input, silahkan konfirmasi SPK!',
+  title: 'Input Berhasil!',
+  html: 'Tabungan telah di input!',
   icon: 'success',
   timer: 1500,
   
@@ -23,7 +23,7 @@ Swal.fire({
         <?php endif ?>
 <div class="container">
   
-         <form action="<?= base_url('Simpanan/tambah_tabungan');?>" method="post" enctype="multipart/form-data">
+         <form action="<?= site_url('Simpanan/tambah_tabungan');?>" method="post" enctype="multipart/form-data">
    <div class="row">
 
   
@@ -79,7 +79,7 @@ Swal.fire({
  <div class="col-md-3">       
         <div class="form-group">
           <label for="last">THR (Tunjangan Hari Raya)</label>
-          <input class="form-control" type="number" name="harga_bahan" >
+          <input class="form-control" type="number" name="thr" >
         </div>
       </div>
 
