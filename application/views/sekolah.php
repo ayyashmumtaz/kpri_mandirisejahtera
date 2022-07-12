@@ -43,3 +43,27 @@
         </tbody>
        </table>
 </div>
+
+
+<?php if($this->session->flashdata('order_berhasil')): ?>
+             <script type="text/javascript">
+               let timerInterval
+Swal.fire({
+  title: 'Berhasil!',
+  html: 'Data berhasil di Update!',
+  icon: 'success',
+  timer: 1500,
+  
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+
+})
+            </script>
+                    <?= $this->session->flashdata('order_berhasil') ?>
+           
+        <?php endif ?>

@@ -5,7 +5,10 @@ class Angsuran extends CI_Controller {
 
 	public function index()
 	{
-		
+		$this->load->view('_partials/header');
+		$this->load->view('angsuran');
+		$this->load->view('_partials/footer');
+
 	}
 
 	public function input()

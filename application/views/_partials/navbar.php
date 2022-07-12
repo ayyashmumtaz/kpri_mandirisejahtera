@@ -73,7 +73,22 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Angsuran</a>
-                        <a class="collapse-item" href="<?= site_url('Angsuran/data');?>">Laporan Angsuran</a>
+                        <a class="collapse-item" href="<?= site_url('Angsuran');?>">Data Angsuran</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pembayaran"
+                    aria-expanded="true" aria-controls="pembayaran">
+                    <i class="fas fa-fw fa-dollar-sign"></i>
+                    <span>Pembayaran</span>
+                </a>
+                <div id="pembayaran" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Pembayaran</a>
+                        <a class="collapse-item" href="<?= site_url('Angsuran');?>">Data Pembayaran</a>
                     </div>
                 </div>
             </li>

@@ -87,21 +87,28 @@ Swal.fire({
 
 
 
-    <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Hapus Anggota?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Pilih "Hapus" Jika kamu ingin menghapus anggota <?= $b->nama_anggota?>.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= site_url('Anggota/hapus/'). $b->id_anggota;?>">Hapus</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+    
+    <?php if($this->session->flashdata('order_berhasil')): ?>
+             <script type="text/javascript">
+               let timerInterval
+Swal.fire({
+  title: 'Berhasil!',
+  html: 'Data berhasil di Update!',
+  icon: 'success',
+  timer: 1500,
+  
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+
+})
+            </script>
+                    <?= $this->session->flashdata('order_berhasil') ?>
+           
+        <?php endif ?>
