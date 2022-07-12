@@ -87,8 +87,8 @@
                 <div id="pembayaran" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Pembayaran</a>
-                        <a class="collapse-item" href="<?= site_url('Angsuran');?>">Data Pembayaran</a>
+                        <a class="collapse-item" href="<?= site_url('Pembayaran/input');?>">Input Pembayaran</a>
+                        <a class="collapse-item" href="<?= site_url('Pembayaran');?>">Data Pembayaran</a>
                     </div>
                 </div>
             </li>
