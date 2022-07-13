@@ -30,6 +30,27 @@ public function getDataPembayaran()
     return $query;
 }
 
+  public function getbyIdAnggota($id)
+  {
+   $this->db->select('*');
+    $this->db->from('anggota');
+    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
+    $this->db->where('anggota.id_anggota', $id);
+    $query = $this->db->get();
+    return $query->result();
+}
+public function getUserAnggota($id)
+{
+ $this->db->select('*');
+  $this->db->from('anggota');
+  $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
+  $this->db->where('anggota.id_anggota', $id);
+  $this->db->limit(1);
+  $query = $this->db->get();
+  return $query->result();
+}
+
 public function getPengurus()
 	{
 	$this->db->select('*');
@@ -113,9 +134,15 @@ public function totalAnggotaTAktif()
 public function getDataSimpananUser()
 {
   $name = $this->session->userdata('id_anggota');
+  $month = date('m');
+  $tab = array('id_anggota' => $name);
+
+ 
   $this->db->select('*');
-  $this->db->where('id_anggota', $name);
+  $this->db->where($tab);
    $this->db->from('tabungan');  
+   $this->db->limit(1);
+   $this->db->order_by("id_keuangan", "DESC");
    $query = $this->db->get();
    return $query->result_array();
 }

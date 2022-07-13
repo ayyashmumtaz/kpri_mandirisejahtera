@@ -63,7 +63,12 @@ class Simpanan extends CI_Controller {
 
 	public function lihat($id)
 	{
-		// code...
+	$data['anggota'] = $this->Model_home->getbyIdAnggota($id);
+	$data['user'] = $this->Model_home->getUserAnggota($id);
+	$this->load->view('_partials/header');
+    $this->load->view('_partials/navbar');
+    $this->load->view('lihat_simpanan', $data);
+    $this->load->view('_partials/footer');
 	}
 
 }
