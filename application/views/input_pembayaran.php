@@ -24,19 +24,19 @@ Swal.fire({
 <div class="container">
 <h3>Input Pembayaran</h3>
   <br>
-         <form action="<?= site_url('Angsuran/tambah_angsuran');?>" method="post" enctype="multipart/form-data">
+         <form action="<?= site_url('Pembayaran/proses_input');?>" method="post" enctype="multipart/form-data">
    <div class="row">
 
   
 
 
-          <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_angsuran" readonly>
+          <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_pembayaran" readonly>
    
 
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">TANGGAL INPUT</label>
-          <input type="date" class="form-control" name="tgl_pinjam">
+          <input type="date" class="form-control" name="tgl_bayar">
         </div>
       </div>
       
@@ -60,7 +60,7 @@ Swal.fire({
      <div class="col-md-5">
         <div class="form-group">
           <label for="last">Jumlah Yang Ingin Dibayar</label>
-          <input type="number" name="jumlah_angsuran" class="form-control">
+          <input type="number" name="jumlah" class="form-control">
         </div>
 
         

@@ -21,6 +21,15 @@ public function getDataAngsuran()
     return $query;
 }
 
+public function getDataPembayaran()
+	{
+	$this->db->select('*');
+    $this->db->from('pembayaran');
+    $this->db->join('anggota', 'pembayaran.id_anggota = anggota.id_anggota');
+    $query = $this->db->get();
+    return $query;
+}
+
 public function getPengurus()
 	{
 	$this->db->select('*');

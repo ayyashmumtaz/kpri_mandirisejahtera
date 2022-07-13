@@ -11,8 +11,8 @@ class Login extends CI_Controller{
 
 	function index(){
 		$status = $this->session->userdata('role');
-		if(isset($status)){
-      redirect(site_url("Home"));
+    if($status != "admin"){
+      redirect(site_url("Login"));
     }
 		$status = $this->session->userdata('role');
 		$this->load->view('_partials/header');
