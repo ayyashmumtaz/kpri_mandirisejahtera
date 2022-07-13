@@ -35,7 +35,7 @@
 
                   <td>
                   <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Sekolah/edit/'). $b->id;?>">Edit</a>
-                                    <a class="btn btn-sm btn-danger" style="margin-bottom: 2%;" href="<?= site_url('Sekolah/hapus/'). $b->id;?>">Hapus</a>
+
 
                       </td>
                        
