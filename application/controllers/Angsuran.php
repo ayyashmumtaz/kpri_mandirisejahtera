@@ -13,7 +13,11 @@ class Angsuran extends CI_Controller {
 
 	public function input()
 	{
-		// code...
+		$this->load->view('_partials/header');
+		$this->load->view('_partials/navbar');
+		$this->load->view('input_angsuran');
+		$this->load->view('_partials/footer');
+
 	}
 
 }
