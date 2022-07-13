@@ -46,16 +46,26 @@ MANDIRI SEJAHTERA</p>
               <div class="col-6">
                 <div class="card catagory-card">
                   <div class="card-body"><a class="text-danger" href="catagory.html">
-                     <span>Potongan Bulan Lalu</span></a>
-                    <Small>Rp. <?= $a['sim_wajib'] ;?></Small></div>
+                     <span>Simpanan Wajib</span></a>
+                    <Small><?php
+                        $angka = $a['sim_wajib'] ;
+
+                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                echo $hasil_rupiah;
+               ?></Small></div>
                 </div>
               </div>
               <!-- Single Catagory Card -->
               <div class="col-6">
                 <div class="card catagory-card">
                   <div class="card-body"><a href="catagory.html">
-                      <span>Tabungan Pokok</span></a>
-                      <Small>Rp. 1,000,000</Small></div>
+                      <span>Simpanan Pokok</span></a>
+                      <Small><?php
+                        $angka = $a['sim_pokok'] ;
+
+                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                echo $hasil_rupiah;
+               ?></Small></div>
                 </div>
               </div>
               <!-- Single Catagory Card -->
@@ -66,16 +76,52 @@ MANDIRI SEJAHTERA</p>
               <div class="col-6">
                 <div class="card catagory-card">
                   <div class="card-body"><a class="text-danger" href="catagory.html">
-                    <span>Total Gaji Bersih</span></a>
-                    <Small>Rp. 1,000,000</Small></div>
+                    <span>THR</span></a>
+                    <Small><?php
+                        $angka = $a['thr'] ;
+
+                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                echo $hasil_rupiah;
+               ?></Small></div>
                 </div>
               </div>
               <!-- Single Catagory Card -->
               <div class="col-6">
                 <div class="card catagory-card">
                   <div class="card-body"><a class="text-info" href="catagory.html">
-                    <span>Travel</span></a>
-                    <Small>Rp. 1,000,000</Small></div>
+                    <span>Pendidikan</span></a>
+                    <Small><?php
+                        $angka = $a['pendidikan'] ;
+
+                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                echo $hasil_rupiah;
+               ?></Small></div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card catagory-card">
+                  <div class="card-body"><a class="text-danger" href="catagory.html">
+                    <span>Rekreasi</span></a>
+                    <Small><?php
+                        $angka = $a['rekreasi'] ;
+
+                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                echo $hasil_rupiah;
+               ?></Small></div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card catagory-card">
+                  <div class="card-body"><a class="text-danger" href="catagory.html">
+                    <span>Sisa Angsuran</span></a>
+                    <Small>
+                    <?php foreach ($angsuran as $a) : ?>
+                      <?php
+                        $angka = $a['jumlah_angsuran'] ;
+
+                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                echo $hasil_rupiah;
+               ?><?php endforeach; ?></Small></div>
                 </div>
               </div>
             </div>

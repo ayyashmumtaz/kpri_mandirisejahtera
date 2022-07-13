@@ -22,7 +22,7 @@ Swal.fire({
            
         <?php endif ?>
 <div class="container">
-  <h3>Input Pinjaman</h3>
+<h3>Input Pembayaran</h3>
   <br>
          <form action="<?= site_url('Angsuran/tambah_angsuran');?>" method="post" enctype="multipart/form-data">
    <div class="row">
@@ -59,7 +59,7 @@ Swal.fire({
   
      <div class="col-md-5">
         <div class="form-group">
-          <label for="last">Jumlah Pinjaman</label>
+          <label for="last">Jumlah Yang Ingin Dibayar</label>
           <input type="number" name="jumlah_angsuran" class="form-control">
         </div>
 
@@ -68,12 +68,7 @@ Swal.fire({
         
 
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="last">Jasa</label>
-          <input type="number" name="jasa" class="form-control">
-        </div>
-        </div>
+   
 
       </div>
   

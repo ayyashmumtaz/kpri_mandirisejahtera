@@ -12,6 +12,15 @@ class Model_home extends CI_Model {
     return $query;
 }
 
+public function getDataAngsuran()
+	{
+	$this->db->select('*');
+    $this->db->from('angsuran_uang');
+    $this->db->join('anggota', 'angsuran_uang.id_anggota = anggota.id_anggota');
+    $query = $this->db->get();
+    return $query;
+}
+
 public function getPengurus()
 	{
 	$this->db->select('*');
@@ -98,6 +107,16 @@ public function getDataSimpananUser()
   $this->db->select('*');
   $this->db->where('id_anggota', $name);
    $this->db->from('tabungan');  
+   $query = $this->db->get();
+   return $query->result_array();
+}
+
+public function getDataAngsuranUser()
+{
+  $name = $this->session->userdata('id_anggota');
+  $this->db->select('*');
+  $this->db->where('id_anggota', $name);
+   $this->db->from('angsuran_uang');  
    $query = $this->db->get();
    return $query->result_array();
 }
