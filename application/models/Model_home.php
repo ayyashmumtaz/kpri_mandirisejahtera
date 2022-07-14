@@ -20,6 +20,16 @@ public function getDataAngsuran()
     $query = $this->db->get();
     return $query;
 }
+public function getAllData()
+	{
+	$this->db->select('*');
+    $this->db->from('anggota');
+    $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
+    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    $this->db->join('angsuran_uang', 'anggota.id_anggota = angsuran_uang.id_anggota');
+    $query = $this->db->get();
+    return $query;
+}
 
 public function getDataPembayaran()
 	{

@@ -37,10 +37,8 @@
           
             <tr>
               
-                <td><?php
-                setlocale(LC_ALL, 'IND');
-                $mydate = $b->tgl_simpan;
-                echo date('F Y', strtotime($mydate));?></td>
+                <td><?= $b->tgl_simpan;?>
+             </td>
                 <td><?php
                         $angka = $b->sim_pokok ;
 

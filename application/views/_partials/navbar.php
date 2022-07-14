@@ -106,10 +106,7 @@
                 <div id="download" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= site_url('Laporan/anggota');?>">Data Tagihan Peranggota</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/sekolah');?>">Data Tagihan Persekolah</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Rekap Tagihan Instansi</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Rekap Tagihan Instansi</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan');?>">Laporan Keuangan</a>
 
                     </div>
                 </div>
