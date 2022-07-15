@@ -31,21 +31,20 @@ class Angsuran extends CI_Controller {
 
 	public function tambah_angsuran()
 	{
-		$id_angsuran =	$this->input->post('id_angsuran');
-		$tgl_pinjam =	$this->input->post('tgl_pinjam');
 		$id_anggota =	$this->input->post('id_anggota');
 		$jumlah_angsuran =	$this->input->post('jumlah_angsuran');
 		$jasa =	$this->input->post('jasa');
 
 		$data = array(
-			'id_angsuran' => $id_angsuran,
-			'tgl_pinjam' => $tgl_pinjam,
-			'id_anggota' => $id_anggota,
 			'jumlah_angsuran' => $jumlah_angsuran,
 			'jasa' => $jasa
 		);
 
-		$this->Model_home->input_data($data, 'angsuran_uang');
+		$where = array(
+			'id_anggota' => $id_anggota
+		);
+
+		$this->Model_home->update_data($where,$data, 'tabungan');
 		$this->session->set_flashdata('order_berhasil', ' ');
 		redirect('Angsuran/input');
 	}

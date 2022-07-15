@@ -44,8 +44,7 @@ Swal.fire({
               
                 <th>Sisa Pinjaman</th>
                 <th>Jasa</th>
-                <th>Status</th>
-                <th>Aksi</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -54,25 +53,27 @@ Swal.fire({
             ?>
             <tr>
             <td><?= $b->nik?></td>
-            <td><?= $b->tgl_pinjam?></td>
+            <td><?= $b->tgl_simpan?></td>
                 <td><?= $b->nama_anggota?></td>
                 
                 <td><?php
-                $angka = $b->jumlah_angsuran;
+                $angka = $b->angsuran;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;
+
+                if ($hasil_rupiah == NULL) {
+                    echo "Rp 0";
+                } else {
+                 
+                    echo $hasil_rupiah;
+                }
                ?></td>
                 <td><?php $angka = $b->jasa;
 
 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
 echo $hasil_rupiah;
 ?></td>
-                <td></td>
-                
-                  <td>
-                  
-                      </td>
+        
                        
         <?php }?>
         </tbody>
