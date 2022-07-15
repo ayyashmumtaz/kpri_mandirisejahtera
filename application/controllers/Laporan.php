@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Laporan extends CI_Controller {
 
     function __construct(){
@@ -17,14 +20,14 @@ class Laporan extends CI_Controller {
     }
 
     public function anggota(){
-        $data['semua'] = $this->Model_home->getAllData()->result();
-        $this->load->view('_partials/header');
-        $this->load->view('_partials/navbar');
-        $this->load->view('lp_anggota', $data);
-        $this->load->view('_partials/footer');
+      $this->load->view('_partials/header');
+      $this->load->view('_partials/navbar');
+      $this->load->view('laporan');
+      $this->load->view('_partials/footer');
     }
 
-    public function exportAnggota(){
+
+    public function exportAnggota($tgl){
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
         // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
@@ -54,8 +57,9 @@ class Laporan extends CI_Controller {
           ]
         ];
         $sheet->setCellValue('A1', "KPRI MANDIRI SEJAHTERA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->setCellValue('A2', "Bulan : $tgl"); // Set kolom A1 dengan tulisan "DATA SISWA"
         $sheet->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
-        $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
+        $sheet->getStyle('A1:A2')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
         $sheet->setCellValue('B3', "NIK"); // Set kolom B3 dengan tulisan "NIS"
@@ -84,23 +88,38 @@ class Laporan extends CI_Controller {
         $sheet->getStyle('K3')->applyFromArray($style_col);
         $sheet->getStyle('L3')->applyFromArray($style_col);
         $sheet->getStyle('M3')->applyFromArray($style_col);
+        $data = $this->Model_home->getAllData($tgl)->result();
         // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
-        foreach($semua as $data){ // Lakukan looping pada variabel siswa
-        $sheet->setCellValue('A'.$numrow, $no);
-        $sheet->setCellValue('B'.$numrow, $data->nik);
-        $sheet->setCellValue('C'.$numrow, $data->nama);
-        $sheet->setCellValue('D'.$numrow, $data->nama_sekolah);
-        $sheet->setCellValue('E'.$numrow, $data->sim_pokok);
-        $sheet->setCellValue('F'.$numrow, $data->sim_wajib);
-        $sheet->setCellValue('G'.$numrow, $data->thr);
-        $sheet->setCellValue('H'.$numrow, $data->pendidikan);
-        $sheet->setCellValue('I'.$numrow, $data->rekreasi);
-        $sheet->setCellValue('J'.$numrow, $data->angsuran_pokok);
-        // $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
-        $sheet->setCellValue('L'.$numrow, $data->jasa);
-        $sheet->setCellValue('M'.$numrow, $data->total);
+        foreach($data as $data){ // Lakukan looping pada variabel siswa
+          if (!isset($data)) {
+            $sheet->setCellValue('E'.$numrow, '0');
+            $sheet->setCellValue('F'.$numrow, '0');
+            $sheet->setCellValue('G'.$numrow, '0');
+            $sheet->setCellValue('H'.$numrow, '0');
+            $sheet->setCellValue('I'.$numrow, '0');
+            $sheet->setCellValue('J'.$numrow, '0');
+            $sheet->setCellValue('K'.$numrow, '0');
+            $sheet->setCellValue('L'.$numrow, '0');
+            $sheet->setCellValue('M'.$numrow, '0');
+
+          }
+          $sheet->setCellValue('A'.$numrow, $no);
+            $sheet->setCellValue('B'.$numrow, $data->nik);
+            $sheet->setCellValue('C'.$numrow, $data->nama_anggota);
+            $sheet->setCellValue('D'.$numrow, $data->nama_sekolah);
+            $sheet->setCellValue('E'.$numrow, $data->sim_pokok);
+            $sheet->setCellValue('F'.$numrow, $data->sim_wajib);
+            $sheet->setCellValue('G'.$numrow, $data->thr);
+            $sheet->setCellValue('H'.$numrow, $data->pendidikan);
+            $sheet->setCellValue('I'.$numrow, $data->rekreasi);
+            $sheet->setCellValue('J'.$numrow, $data->jumlah_angsuran);
+            // $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
+            $sheet->setCellValue('L'.$numrow, $data->jasa);
+
+            
+       
 
           // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
           $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -122,9 +141,9 @@ class Laporan extends CI_Controller {
         }
         // Set width kolom
         $sheet->getColumnDimension('A')->setWidth(5); // Set width kolom A
-        $sheet->getColumnDimension('B')->setWidth(15); // Set width kolom B
-        $sheet->getColumnDimension('C')->setWidth(25); // Set width kolom C
-        $sheet->getColumnDimension('D')->setWidth(20); // Set width kolom D
+        $sheet->getColumnDimension('B')->setWidth(10); // Set width kolom B
+        $sheet->getColumnDimension('C')->setWidth(30); // Set width kolom C
+        $sheet->getColumnDimension('D')->setWidth(25); // Set width kolom D
         $sheet->getColumnDimension('E')->setWidth(30); // Set width kolom E
         $sheet->getColumnDimension('F')->setWidth(30); // Set width kolom F
         $sheet->getColumnDimension('G')->setWidth(30); // Set width kolom G
@@ -143,9 +162,10 @@ class Laporan extends CI_Controller {
         $sheet->setTitle("KPRI - DATA KEUANGAN ANGGOTA");
         // Proses file excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="KPRI - DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="['.$tgl.']DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
+        ob_end_clean();
         $writer->save('php://output');
       }
 

@@ -32,6 +32,19 @@ MANDIRI SEJAHTERA</p>
 <?php foreach ($anggota as $anggota) : ?>
 <p>NIK : <?= $anggota['nik']; ?></p>
 <p>Nama : <?= $this->session->userdata('nama_anggota') ?></p>
+<p>Status : <?php $status = $anggota['status'];
+                 switch ($status) {
+                  case '0':
+                    echo '<button class="btn btn-sm btn-danger">TIDAK AKTIF</button>';
+                    break;
+                  case '1':
+                    echo '<button class="btn btn-sm btn-success">AKTIF</button>';
+                    break;
+                  
+                  default:
+                    // code...
+                    break;
+                } ?></p>
 
 <?php endforeach; ?>
 

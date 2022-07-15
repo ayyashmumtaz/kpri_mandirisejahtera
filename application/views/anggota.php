@@ -35,6 +35,7 @@ Swal.fire({
 <div class="container">
     <h3>Anggota Koperasi</h3>
     <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Anggota/tambah');?>">+ Tambah Anggota</a>
+    <a class="btn btn-sm btn-success" style="margin-bottom: 2%;" href="<?= site_url('Anggota/aktifkan');?>">Aktifkan Semua Anggota</a>
 
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
@@ -63,10 +64,10 @@ Swal.fire({
                 $status = $b->status;
                  switch ($status) {
                   case '0':
-                    echo '<button class="btn btn-sm btn-danger">TIDAK AKTIF</button>';
+                    echo '<a class="btn btn-sm btn-danger" href="'.site_url('anggota/aktifkanAnggota/').$b->id_anggota.'">TIDAK AKTIF</a>';
                     break;
                   case '1':
-                    echo '<button class="btn btn-sm btn-success">AKTIF</button>';
+                    echo '<a class="btn btn-sm btn-success" href="'.site_url('anggota/nonaktifkanAnggota/').$b->id_anggota.'">AKTIF</a>';
                     break;
                   
                   default:

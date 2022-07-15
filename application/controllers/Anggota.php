@@ -36,7 +36,7 @@ class Anggota extends CI_Controller {
 		$id_sekolah = $this->input->post('id_sekolah');
 		$tgl_daftar = $this->input->post('tgl_daftar');
 		$role = $this->input->post('role');
-		$status = 0;
+		$status = 1;
 
 		$data = array(
 			'id_anggota' => $id,
@@ -88,6 +88,56 @@ class Anggota extends CI_Controller {
 
 		$where = array(
 			'id_anggota' => $id
+		);
+
+		$this->Model_home->update_data($where,$data,'anggota');
+		$this->session->set_flashdata('order_berhasil', ' ');
+		redirect('Anggota');
+	}
+
+	public function aktifkanAnggota($id)
+	{
+		$status = 1;
+
+		$data = array(
+			'status' => $status
+		);
+
+		$where = array(
+			'id_anggota' => $id
+		);
+
+		$this->Model_home->update_data($where,$data,'anggota');
+		$this->session->set_flashdata('order_berhasil', ' ');
+		redirect('Anggota');
+	}
+	public function nonaktifkanAnggota($id)
+	{
+		$status = 0;
+
+		$data = array(
+			'status' => $status
+		);
+
+		$where = array(
+			'id_anggota' => $id
+		);
+
+		$this->Model_home->update_data($where,$data,'anggota');
+		$this->session->set_flashdata('order_berhasil', ' ');
+		redirect('Anggota');
+	}
+
+	public function aktifkan()
+	{
+		$status = 1;
+
+		$data = array(
+			'status' => $status
+		);
+
+		$where = array(
+			'status' => 0
 		);
 
 		$this->Model_home->update_data($where,$data,'anggota');

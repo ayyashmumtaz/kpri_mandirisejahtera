@@ -20,13 +20,16 @@ public function getDataAngsuran()
     $query = $this->db->get();
     return $query;
 }
-public function getAllData()
+public function getAllData($tgl)
 	{
-	$this->db->select('*');
+    $where = array('tgl_simpan' => $tgl, 'tgl_pinjam' => $tgl);
+	  $this->db->select('*');
     $this->db->from('anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
-    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
-    $this->db->join('angsuran_uang', 'anggota.id_anggota = angsuran_uang.id_anggota');
+    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota', 'left');
+    $this->db->join('angsuran_uang', 'anggota.id_anggota = angsuran_uang.id_anggota', 'left');
+    $this->db->where($where);
+    $this->db->order_by("id_keuangan", "DESC");
     $query = $this->db->get();
     return $query;
 }
