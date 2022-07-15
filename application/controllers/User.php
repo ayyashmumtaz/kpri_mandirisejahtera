@@ -15,7 +15,6 @@ class User extends CI_Controller{
     public function index(){
         $data['anggota'] = $this->Model_home->getDataUser();
         $data['simpanan'] = $this->Model_home->getDataSimpananUser();
-        $data['angsuran'] = $this->Model_home->getDataAngsuranUser();
         $this->load->view('user/_partials/head');
         $this->load->view('user/index', $data);
         $this->load->view('user/_partials/foot');
