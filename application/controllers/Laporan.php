@@ -161,11 +161,12 @@ class Laporan extends CI_Controller {
         // Set judul file excel nya
         $sheet->setTitle("KPRI - DATA KEUANGAN ANGGOTA");
         // Proses file excel
+        ob_end_clean();
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment; filename="['.$tgl.']DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
-        ob_end_clean();
+        
         $writer->save('php://output');
       }
 
