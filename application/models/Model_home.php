@@ -15,8 +15,8 @@ class Model_home extends CI_Model {
 public function getDataAngsuran()
 	{
 	$this->db->select('*');
-    $this->db->from('tabungan');
-    $this->db->join('anggota', 'tabungan.id_anggota = anggota.id_anggota');
+    $this->db->from('angsuran');
+    $this->db->join('anggota', 'angsuran.id_anggota = anggota.id_anggota');
     $query = $this->db->get();
     return $query;
 }
@@ -33,15 +33,15 @@ public function getAllData($tgl)
     return $query;
 }
 
-public function getAllDataSekolah($tgl)
+public function getAllDataSekolah($sekolah,$tgl)
 	{
-    $where = array('tgl_simpan' => $tgl);
 	  $this->db->select('*');
     $this->db->from('anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
     $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota', 'left outer');
     $this->db->join('angsuran_uang', 'anggota.id_anggota = angsuran_uang.id_anggota', 'left outer');
-    $this->db->where($where);
+    $this->db->where('id_sekolah', $sekolah);
+    $this->db->where('tgl_simpan', $tgl);
     $this->db->order_by("id_keuangan", "DESC");
     $query = $this->db->get();
     return $query;
@@ -178,7 +178,7 @@ public function getDataAngsuranUser()
   $name = $this->session->userdata('id_anggota');
   $this->db->select('*');
   $this->db->where('id_anggota', $name);
-   $this->db->from('angsuran_uang');  
+   $this->db->from('angsuran');  
    $query = $this->db->get();
    return $query->result_array();
 }

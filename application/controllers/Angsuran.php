@@ -33,18 +33,18 @@ class Angsuran extends CI_Controller {
 	{
 		$id_anggota =	$this->input->post('id_anggota');
 		$jumlah_angsuran =	$this->input->post('jumlah_angsuran');
+		$bulan =  	$this->input->post('bulan');
 		$jasa =	$this->input->post('jasa');
 
 		$data = array(
-			'jumlah_angsuran' => $jumlah_angsuran,
+			'id_anggota' => $id_anggota,
+			'tgl_simpan' => $bulan,
+			'angsuran' => $jumlah_angsuran,
 			'jasa' => $jasa
 		);
 
-		$where = array(
-			'id_anggota' => $id_anggota
-		);
 
-		$this->Model_home->update_data($where,$data, 'tabungan');
+		$this->Model_home->input_data($data, 'angsuran');
 		$this->session->set_flashdata('order_berhasil', ' ');
 		redirect('Angsuran/input');
 	}

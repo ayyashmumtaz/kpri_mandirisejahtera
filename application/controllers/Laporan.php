@@ -254,10 +254,12 @@ class Laporan extends CI_Controller {
         $sheet->getStyle('L3')->applyFromArray($style_col);
         $sheet->getStyle('M3')->applyFromArray($style_col);
 
-        $this->input->post('tgl');
+        $sekolah = $this->input->post('sekolah');
         $tgl = $this->input->post('tgl');
 
-        $data = $this->Model_home->getAllData($tgl)->result();
+        // $where = array('id_sekolah' => $sekolah,'tgl' => $tgl);
+
+        $data = $this->Model_home->getAllData($sekolah,$tgl)->result();
         // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4

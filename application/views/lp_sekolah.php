@@ -11,7 +11,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">BULAN INPUT</label>
-          <select class="form-control" name="tgl_bayar">
+          <select class="form-control" name="tgl">
             <option value="Januari">Januari</option>
             <option value="Februari">Februari</option>
             <option value="Maret">Maret</option>
@@ -32,7 +32,7 @@
       <div class="col-md-5">
         <div class="form-group">
           <label for="last">NAMA SEKOLAH</label>
-           <select class="form-control" name="id_anggota">
+           <select class="form-control" name="sekolah">
             <option selected disabled>-- PILIH SEKOLAH --</option>
             <?php foreach($sekolah as $i){ ?>
                   <option value="<?php echo $i['id']; ?>"><?php echo $i['nama_sekolah']; ?></option>

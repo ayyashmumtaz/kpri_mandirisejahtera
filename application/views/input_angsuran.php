@@ -36,7 +36,7 @@ Swal.fire({
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">BULAN INPUT</label>
-          <select class="form-control" name="tgl_pinjam">
+          <select class="form-control" name="bulan">
           <option value="Januari">Januari</option>
             <option value="Februari">Februari</option>
             <option value="Maret">Maret</option>
