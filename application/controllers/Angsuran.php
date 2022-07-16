@@ -37,6 +37,7 @@ class Angsuran extends CI_Controller {
 		$jasa =	$this->input->post('jasa');
 
 		$data = array(
+			'id_angsuran' => uniqid(),
 			'id_anggota' => $id_anggota,
 			'tgl_simpan' => $bulan,
 			'angsuran' => $jumlah_angsuran,

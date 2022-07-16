@@ -83,6 +83,7 @@ class Laporan extends CI_Controller {
         $sheet->setCellValue('L3', "Jasa");
         $sheet->setCellValue('M3', "Total");
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
+        $spreadsheet->getActiveSheet()->getStyle('A4:Z70')->getNumberFormat()->setFormatCode('#,##');
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
         $sheet->getStyle('C3')->applyFromArray($style_col);
