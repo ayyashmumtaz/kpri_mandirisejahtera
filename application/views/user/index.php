@@ -143,18 +143,18 @@ MANDIRI SEJAHTERA</p>
       </div>
       <?php endforeach; ?>
       <!-- Flash Sale Slide -->
-     
-      <!-- Top Products -->
+<!--      
+      Top Products -->
    
       <!-- Cool Facts Area-->
-      <div class="cta-area">
+      <!-- <div class="cta-area">
         <div class="container">
           <div class="cta-text p-4 p-lg-5" style="background-image: url(img/bg-img/24.jpg)">
             <h4 class="text-white">On Sale 50% Off!</h4>
             <p class="text-white">Suha is a multipurpose, creative &amp; <br>modern mobile template.</p><a class="btn btn-warning" href="#">Shop Today</a>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
     </div>

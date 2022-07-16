@@ -5,7 +5,7 @@
         <div class="suha-footer-nav h-100">
           <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
             <li class="active"><a href="home.html"><i class="lni lni-home"></i>Beranda</a></li>
-            <li><a href="message.html"><i class="lni lni-plus"></i>Ajukan Pinjaman</a></li>
+            <!-- <li><a href="message.html"><i class="lni lni-plus"></i>Ajukan Pinjaman</a></li> -->
             <li><a href="<?= site_url('Login/logout');?>"><i class="lni lni-exit"></i>Keluar</a></li>
           </ul>
         </div>
