@@ -28,7 +28,7 @@
                 <td><?= $b->nama_sekolah?></td>
 
                 <td>
-                <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Laporan/lihat_instansi/'). $b->id;?>">Lihat Data</a>
+                <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Laporan/lihat_instansi/').$b->id.'/Januari';?>">Lihat Data</a>
                       </td>
                        
         <?php }?>

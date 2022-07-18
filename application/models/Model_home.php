@@ -36,7 +36,7 @@ public function getAllData($tgl)
 public function getDataInstansi($tgl)
 	{
     $where = array('tgl_simpan' => $tgl);
-	  $this->db->select('nama_sekolah,id, SUM(sim_pokok) as total_pokok, SUM(sim_wajib) as total_wajib, SUM(thr) as total_thr, SUM(pendidikan) as total_pendidikan, SUM(rekreasi) as total_rekreasi, SUM(angsuran) as total_angsuran, SUM(jasa) as total_jasa');
+	  $this->db->select('*');
     $this->db->from('sekolah');
     $this->db->join('tabungan', 'sekolah.id = tabungan.id_sekolah', 'left outer');
     $this->db->where($where);

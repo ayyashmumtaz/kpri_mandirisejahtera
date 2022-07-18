@@ -57,10 +57,10 @@
               
        
                 <td><?=$b->nama_sekolah?></td>
-                <td><?php if ($b->total_wajib == null) {
+                <td><?php if ($b->sim_wajib == null) {
                     echo "Rp. 0";
                 }else{
-                    $total_semua = $b->total_pokok+$b->total_wajib+$b->total_thr+$b->total_pendidikan+$b->total_rekreasi+$b->total_angsuran+$b->total_jasa;
+                    $total_semua = $b->sim_pokok+$b->sim_wajib+$b->thr+$b->pendidikan+$b->rekreasi+$b->angsuran+$b->jasa;
                     echo "Rp. ".number_format($total_semua,0,',','.');
                 }?></td>
                 
