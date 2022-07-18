@@ -53,10 +53,37 @@ class Simpanan extends CI_Controller {
 
 		);
 
+		$data1 = array(
+			'id_keuangan' => $id_keuangan,
+			'id_anggota' => $id_anggota,
+			'sim_pokok' => $sim_pokok,
+			'sim_wajib' => $sim_wajib,
+			'thr' => $thr,
+			'pendidikan' => $pendidikan,
+			'rekreasi' => $rekreasi,
+			'angsuran' => $jumlah_angsuran,
+			'jasa' => $jasa
+			
 
-		$this->Model_home->input_data($data, 'tabungan');
-		$this->session->set_flashdata('order_berhasil', ' ');
-		redirect('Simpanan/input');
+		);
+
+		$this->db->where('id_anggota',$id_anggota);
+		$q = $this->db->get('tabungan');
+	 
+		if ( $q->num_rows() > 0 ) 
+		{
+		   $this->db->where('id_anggota',$id_anggota);
+		   $this->Model_home->input_data($data, 'riwayat_tabungan');
+		   $this->session->set_flashdata('order_berhasil', ' ');
+			redirect('Simpanan/input');
+		} else {
+			$this->Model_home->input_data($data, 'riwayat_tabungan');
+			$this->Model_home->input_data($data1, 'tabungan');
+			$this->session->set_flashdata('order_berhasil', ' ');
+			redirect('Simpanan/input');
+		}
+
+		
 
 	}
 

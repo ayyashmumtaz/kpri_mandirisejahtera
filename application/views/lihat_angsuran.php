@@ -11,7 +11,7 @@
 
 
 <div class="container">
-    <h3>Data Simpanan</h3>
+    <h3>Data Angsuran</h3>
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>

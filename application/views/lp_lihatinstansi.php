@@ -28,12 +28,15 @@
                 <th>Jasa</th>
         </thead>
         <tbody>
-        <div class="row">
-    <div class="col-md-4">
-    <?php
+        <?php
             foreach($user as $b){
             ?>
              <p>Instansi : <?=$b->nama_sekolah?></p>
+        <div class="row">
+     
+             
+    <div class="col-md-2">
+
     <select class="form-control" name="tgl" onchange="location = this.value;">
             <option <?php if ($this->uri->segment(4) == 'Januari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Januari');?>">Januari</option>
             <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari');?>">Februari</option>
@@ -50,9 +53,34 @@
           </select>
           
     </div>
+    <?php } ?>
+
+    <div class="col-md-2">
+    <?php
+            foreach($user as $b){
+            ?>
+            
+    <select class="form-control" name="tgl" onchange="location = this.value;">
+            <option <?php if ($this->uri->segment(5) == '2022') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2022');?>">2022</option>
+            <option <?php if ($this->uri->segment(5) == '2023') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2023');?>">2023</option>
+            <option <?php if ($this->uri->segment(5) == '2024') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2024');?>">2024</option>
+            <option <?php if ($this->uri->segment(5) == '2025') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2025');?>">2025</option>
+            <option <?php if ($this->uri->segment(5) == '2026') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2026');?>">2026</option>
+            <option <?php if ($this->uri->segment(5) == '2027') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2027');?>">2027</option>
+            <option <?php if ($this->uri->segment(5) == '2028') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2028');?>">2028</option>
+            <option <?php if ($this->uri->segment(5) == '2029') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2029');?>">2029</option>
+            <option <?php if ($this->uri->segment(5) == '2030') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2030');?>">2030</option>
+            <option <?php if ($this->uri->segment(5) == '2031') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2031');?>">2031</option>
+            <option <?php if ($this->uri->segment(5) == '2032') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2032');?>">2032</option>
+            <option <?php if ($this->uri->segment(5) == '2033') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2033');?>">2033</option>
+          </select>
+          
+    </div>
+    <?php } ?>
+  
   
     </div>
-            <?php } ?>
+          
 
             <?php
             foreach($anggota as $b){

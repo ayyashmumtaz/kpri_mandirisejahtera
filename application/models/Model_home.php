@@ -15,8 +15,8 @@ class Model_home extends CI_Model {
 public function getDataAngsuran()
 	{
 	$this->db->select('*');
-    $this->db->from('tabungan');
-    $this->db->join('anggota', 'tabungan.id_anggota = anggota.id_anggota');
+    $this->db->from('riwayat_tabungan');
+    $this->db->join('anggota', 'riwayat_tabungan.id_anggota = anggota.id_anggota');
     $query = $this->db->get();
     return $query;
 }
@@ -26,7 +26,7 @@ public function getAllData($tgl)
 	  $this->db->select('*');
     $this->db->from('anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
-    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
     $this->db->where($where);
     $this->db->order_by("id_keuangan", "DESC");
     $query = $this->db->get();
@@ -38,7 +38,7 @@ public function getDataInstansi($tgl)
     $where = array('tgl_simpan' => $tgl);
 	  $this->db->select('*');
     $this->db->from('sekolah');
-    $this->db->join('tabungan', 'sekolah.id = tabungan.id_sekolah', 'left outer');
+    $this->db->join('riwayat_tabungan', 'sekolah.id = riwayat_tabungan.id_sekolah', 'left outer');
     $this->db->where($where);
     $query = $this->db->get();
     return $query;
@@ -67,20 +67,20 @@ public function getDataPembayaran()
   {
    $this->db->select('*');
     $this->db->from('anggota');
-    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
     $this->db->where('anggota.id_anggota', $id);
     $query = $this->db->get();
     return $query->result();
 }
 
-public function getbyIdSekolah($id, $tgl)
+public function getbyIdSekolah($id, $tgl, $tahun)
   {
-    $where = array('tgl_simpan' => $tgl, 'id' => $id);
+    $where = array('tgl_simpan' => $tgl, 'id' => $id, 'tahun' => $tahun);
    $this->db->select('*');
     $this->db->from('sekolah');
     $this->db->join('anggota', 'sekolah.id = anggota.id_sekolah');
-    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
     $this->db->where($where);
     $query = $this->db->get();
     return $query->result();
