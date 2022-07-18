@@ -108,8 +108,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Laporan/anggota');?>">Laporan Peranggota</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/sekolah');?>">Laporan Persekolah</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Rekap Tagihan Instansi</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Laporan Persekolah</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/rekap_instansi');?>">Rekap Tagihan Instansi</a>
 
 
                     </div>

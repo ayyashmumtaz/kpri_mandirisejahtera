@@ -320,6 +320,14 @@ class Laporan extends CI_Controller {
 	}
 
 
-
+  public function rekap_instansi()
+	{
+    $tgl = $this->uri->segment(3);
+	  $data['sekolah'] = $this->Model_home->getDataInstansi($tgl)->result();
+	  $this->load->view('_partials/header');
+    $this->load->view('_partials/navbar');
+    $this->load->view('lp_instansi', $data);
+    $this->load->view('_partials/footer');
+	}
 
 }

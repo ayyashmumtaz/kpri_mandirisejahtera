@@ -35,15 +35,18 @@
             ?>
              <p>Instansi : <?=$b->nama_sekolah?></p>
     <select class="form-control" name="tgl" onchange="location = this.value;">
-            <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari');?>">Februari</option>
+            <option <?php if ($this->uri->segment(4) == 'Januari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Januari');?>">Januari</option>
             <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari');?>">Februari</option>
             <option <?php if ($this->uri->segment(4) == 'Maret') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Maret');?>">Maret</option>
             <option <?php if ($this->uri->segment(4) == 'April') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/April');?>">April</option>
             <option <?php if ($this->uri->segment(4) == 'Mei') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Mei');?>">Mei</option>
             <option <?php if ($this->uri->segment(4) == 'Juni') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juni');?>">Juni</option>
             <option <?php if ($this->uri->segment(4) == 'Juli') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juli');?>">Juli</option>
-
-          
+            <option <?php if ($this->uri->segment(4) == 'Agustus') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Agustus');?>">Agustus</option>
+            <option <?php if ($this->uri->segment(4) == 'September') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/September');?>">September</option>
+            <option <?php if ($this->uri->segment(4) == 'Oktober') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Oktober');?>">Oktober</option>
+            <option <?php if ($this->uri->segment(4) == 'November') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/November');?>">November</option>
+            <option <?php if ($this->uri->segment(4) == 'Desember') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Desember');?>">Desember</option>     
           </select>
           
     </div>
