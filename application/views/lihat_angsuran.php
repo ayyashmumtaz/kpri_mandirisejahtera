@@ -17,12 +17,8 @@
             <tr>
                 <th>Bulan</th>
                 <th>Tahun</th>
-                <th>Simpanan Pokok</th>
-                <th>Simpanan Wajib</th>
-                <th>THR</th>
-                <th>Pendidikan</th>
-                <th>Rekreasi</th>
-            </tr>
+                <th>Angsuran</th>
+                <th>Jasa</th>
         </thead>
         <tbody>
         <?php
@@ -42,36 +38,16 @@
              </td>
                 <td><?= $b->tahun;?>
                 <td><?php
-                        $angka = $b->sim_pokok ;
+                        $angka = $b->angsuran ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;?></td>
                 <td><?php
-                        $angka = $b->sim_wajib ;
+                        $angka = $b->jasa ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;?></td>
-                <td>
-                <?php
-                        $angka = $b->thr ;
 
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?>
-                      </td>
-                <td>
-                <?php
-                        $angka = $b->pendidikan ;
-
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?>
-                </td>
-                <td>
-                <?php
-                        $angka = $b->rekreasi ;
-
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?>
-                </td>
                        
         <?php }?>
         </tbody>

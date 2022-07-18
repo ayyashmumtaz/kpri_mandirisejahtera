@@ -15,8 +15,8 @@ class Model_home extends CI_Model {
 public function getDataAngsuran()
 	{
 	$this->db->select('*');
-    $this->db->from('angsuran');
-    $this->db->join('anggota', 'angsuran.id_anggota = anggota.id_anggota');
+    $this->db->from('tabungan');
+    $this->db->join('anggota', 'tabungan.id_anggota = anggota.id_anggota');
     $query = $this->db->get();
     return $query;
 }
@@ -33,19 +33,25 @@ public function getAllData($tgl)
     return $query;
 }
 
-public function getAllDataSekolah($sekolah,$tgl)
+public function getDataInstansi()
 	{
-	  $this->db->select('*');
-    $this->db->from('anggota');
-    $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
-    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota', 'left outer');
-    $this->db->join('angsuran_uang', 'anggota.id_anggota = angsuran_uang.id_anggota', 'left outer');
-    $this->db->where('id_sekolah', $sekolah);
-    $this->db->where('tgl_simpan', $tgl);
-    $this->db->order_by("id_keuangan", "DESC");
+	  $this->db->select('*, SUM(sim_pokok) as total_pokok, SUM(sim_wajib) as total_wajib, SUM(thr) as total_thr, SUM(pendidikan) as total_pendidikan, SUM(rekreasi) as total_rekreasi, SUM(angsuran) as total_angsuran, SUM(jasa) as total_jasa');
+    $this->db->from('sekolah');
+    $this->db->join('tabungan', 'sekolah.id = tabungan.id_sekolah', 'left outer');
+    $this->db->where('tgl_simpan', 'September');
     $query = $this->db->get();
     return $query;
 }
+
+public function getDataAngsuranInstansi()
+	{
+	$this->db->select('*');
+    $this->db->from('angsuran');
+    $query = $this->db->get();
+    return $query;
+}
+
+
 
 public function getDataPembayaran()
 	{
@@ -66,6 +72,18 @@ public function getDataPembayaran()
     $query = $this->db->get();
     return $query->result();
 }
+
+public function getbyIdSekolah($id, $tgl)
+  {
+    $where = array('tgl_simpan' => $tgl, 'id' => $id);
+   $this->db->select('*');
+    $this->db->from('sekolah');
+    $this->db->join('anggota', 'sekolah.id = anggota.id_sekolah');
+    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    $this->db->where($where);
+    $query = $this->db->get();
+    return $query->result();
+}
 public function getUserAnggota($id)
 {
  $this->db->select('*');
@@ -73,6 +91,15 @@ public function getUserAnggota($id)
   $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
   $this->db->where('anggota.id_anggota', $id);
   $this->db->limit(1);
+  $query = $this->db->get();
+  return $query->result();
+}
+
+public function getUserSekolah($id)
+{
+ $this->db->select('*');
+  $this->db->from('sekolah');
+  $this->db->where('id', $id);
   $query = $this->db->get();
   return $query->result();
 }

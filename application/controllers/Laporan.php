@@ -35,6 +35,8 @@ class Laporan extends CI_Controller {
     }
 
 
+
+
     public function exportAnggota($tgl){
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -185,7 +187,7 @@ class Laporan extends CI_Controller {
           ob_clean();
       }
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="['.$tgl.']DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="('.$tgl.')DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
@@ -222,38 +224,23 @@ class Laporan extends CI_Controller {
             'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
           ]
         ];
-        $sheet->setCellValue('A1', "KPRI MANDIRI SEJAHTERA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->setCellValue('A1', "POTONGAN KPRI MANDIRI SEJAHTERA KLAPANUNGGAL"); // Set kolom A1 dengan tulisan "DATA SISWA"
         $sheet->setCellValue('A2', "Bulan : $tgl"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->setCellValue('A3', "Instansi : $tgl"); // Set kolom A1 dengan tulisan "DATA SISWA"
         $sheet->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
         $sheet->getStyle('A1:A2')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
         $sheet->setCellValue('B3', "NIK"); // Set kolom B3 dengan tulisan "NIS"
         $sheet->setCellValue('C3', "Nama Anggota"); // Set kolom C3 dengan tulisan "NAMA"
-        $sheet->setCellValue('D3', "Instansi"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $sheet->setCellValue('E3', "Simpanan Pokok"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $sheet->setCellValue('F3', "Simpanan Wajib"); // Set kolom E3 dengan tulisan "ALAMAT"
-        $sheet->setCellValue('G3', "THR");
-        $sheet->setCellValue('H3', "Pendidikan");
-        $sheet->setCellValue('I3', "Rekreasi");
-        $sheet->setCellValue('J3', "Angsuran Pokok");
-        // $sheet->setCellValue('K3', "Angsuran Barang");
-        $sheet->setCellValue('L3', "Jasa");
-        $sheet->setCellValue('M3', "Total");
+        $sheet->setCellValue('D3', "Total");
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
         $sheet->getStyle('C3')->applyFromArray($style_col);
         $sheet->getStyle('D3')->applyFromArray($style_col);
-        $sheet->getStyle('E3')->applyFromArray($style_col);
-        $sheet->getStyle('F3')->applyFromArray($style_col);
-        $sheet->getStyle('G3')->applyFromArray($style_col);
-        $sheet->getStyle('H3')->applyFromArray($style_col);
-        $sheet->getStyle('I3')->applyFromArray($style_col);
-        $sheet->getStyle('J3')->applyFromArray($style_col);
-        $sheet->getStyle('K3')->applyFromArray($style_col);
-        $sheet->getStyle('L3')->applyFromArray($style_col);
-        $sheet->getStyle('M3')->applyFromArray($style_col);
+
+     
 
         $sekolah = $this->input->post('sekolah');
         $tgl = $this->input->post('tgl');
@@ -269,11 +256,7 @@ class Laporan extends CI_Controller {
             $sheet->setCellValue('B'.$numrow, $data->nik);
             $sheet->setCellValue('C'.$numrow, $data->nama_anggota);
             $sheet->setCellValue('D'.$numrow, $data->nama_sekolah);
-            $sheet->setCellValue('E'.$numrow, $data->sim_pokok);
-            $sheet->setCellValue('F'.$numrow, $data->sim_wajib);
-            $sheet->setCellValue('G'.$numrow, $data->thr);
-            $sheet->setCellValue('H'.$numrow, $data->pendidikan);
-            $sheet->setCellValue('I'.$numrow, $data->rekreasi);
+
             // $sheet->setCellValue('J'.$numrow, $data->jumlah_angsuran);
             // // $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
             // $sheet->setCellValue('L'.$numrow, $data->jasa);
@@ -286,15 +269,7 @@ class Laporan extends CI_Controller {
           $sheet->getStyle('B'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('C'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('D'.$numrow)->applyFromArray($style_row);
-          $sheet->getStyle('E'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('F'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('G'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('H'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('I'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('J'.$numrow)->applyFromArray($style_row);
-            // $sheet->getStyle('K'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('L'.$numrow)->applyFromArray($style_row);
-            $sheet->getStyle('M'.$numrow)->applyFromArray($style_row);
+
           
           $no++; // Tambah 1 setiap kali looping
           $numrow++; // Tambah 1 setiap kali looping
@@ -304,16 +279,8 @@ class Laporan extends CI_Controller {
         $sheet->getColumnDimension('B')->setWidth(10); // Set width kolom B
         $sheet->getColumnDimension('C')->setWidth(30); // Set width kolom C
         $sheet->getColumnDimension('D')->setWidth(25); // Set width kolom D
-        $sheet->getColumnDimension('E')->setWidth(30); // Set width kolom E
-        $sheet->getColumnDimension('F')->setWidth(30); // Set width kolom F
-        $sheet->getColumnDimension('G')->setWidth(30); // Set width kolom G
-        $sheet->getColumnDimension('H')->setWidth(30); // Set width kolom H
-        $sheet->getColumnDimension('I')->setWidth(30); // Set width kolom I
-        $sheet->getColumnDimension('J')->setWidth(30); // Set width kolom J
-        // $sheet->getColumnDimension('K')->setWidth(30); // Set width kolom K
-        $sheet->getColumnDimension('L')->setWidth(30); // Set width kolom L
-        $sheet->getColumnDimension('M')->setWidth(30); // Set width kolom M
-        
+
+
         // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
         $sheet->getDefaultRowDimension()->setRowHeight(-1);
         // Set orientasi kertas jadi LANDSCAPE
@@ -325,10 +292,34 @@ class Laporan extends CI_Controller {
           ob_clean();
       }
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="['.$tgl.']DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="('.$tgl.')DATA KEUANGAN ANGGOTA.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
       }
+
+      public function instansi(){
+    $data['anggota'] = $this->Model_home->getSekolah()->result();
+	  $this->load->view('_partials/header');
+    $this->load->view('_partials/navbar');
+    $this->load->view('lp_datasekolah', $data);
+    $this->load->view('_partials/footer');
+       
+      }
+
+      public function lihat_instansi()
+	{
+    $id = $this->uri->segment(3);
+    $tgl = $this->uri->segment(4);
+	  $data['anggota'] = $this->Model_home->getbyIdSekolah($id, $tgl);
+	  $data['user'] = $this->Model_home->getUserSekolah($id);
+	  $this->load->view('_partials/header');
+    $this->load->view('_partials/navbar');
+    $this->load->view('lp_lihatinstansi', $data);
+    $this->load->view('_partials/footer');
+	}
+
+
+
 
 }

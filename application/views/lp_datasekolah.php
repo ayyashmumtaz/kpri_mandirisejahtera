@@ -11,15 +11,11 @@
 
 
 <div class="container">
-    <h3>Data Simpanan</h3>
+    <h3>Export Data Per Instansi</h3>
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>
-                <th>ID Anggota</th>
-                <th>Sekolah</th>
-              
-                <th>Nama Anggota</th>
-
+                <th>Nama Instansi</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -29,11 +25,10 @@
             ?>
             <tr>
               
-                <td><?= $b->id_anggota?></td>
                 <td><?= $b->nama_sekolah?></td>
-                <td><?=$b->nama_anggota?></td>
+
                 <td>
-                <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Simpanan/lihat/'). $b->id_anggota;?>">Lihat Data</a>
+                <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Laporan/lihat_instansi/'). $b->id;?>">Lihat Data</a>
                       </td>
                        
         <?php }?>

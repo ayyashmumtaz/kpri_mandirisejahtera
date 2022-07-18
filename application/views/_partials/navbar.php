@@ -59,11 +59,12 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Simpanan/input');?>">Input Data Simpanan</a>
                         <a class="collapse-item" href="<?= site_url('Simpanan/data');?>">Data Simpanan</a>
+                        <a class="collapse-item" href="<?= site_url('Angsuran/data');?>">Data Angsuran</a>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#angsuran"
                     aria-expanded="true" aria-controls="angsuran">
                     <i class="fas fa-fw fa-dollar-sign"></i>
@@ -91,7 +92,7 @@
                         <a class="collapse-item" href="<?= site_url('Pembayaran');?>">Data Pembayaran</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Divider -->
 

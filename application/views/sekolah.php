@@ -1,6 +1,10 @@
 <script type="text/javascript">
     $(document).ready(function () {
     $('#s').DataTable({
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         rowReorder: {
             selector: 'td:nth-child(2)'
         },

@@ -27,22 +27,30 @@ class Simpanan extends CI_Controller {
 	{
 		$id_keuangan =	$this->input->post('id_keuangan');
 		$tgl_simpan =	$this->input->post('tgl_simpan');
+		$tahun =	$this->input->post('tahun');
 		$id_anggota =	$this->input->post('id_anggota');
 		$sim_pokok =	$this->input->post('sim_pokok');
 		$sim_wajib =	$this->input->post('sim_wajib');
 		$thr =	$this->input->post('thr');
 		$pendidikan =	$this->input->post('pendidikan');
 		$rekreasi =	$this->input->post('rekreasi');
+		$jumlah_angsuran =	$this->input->post('jumlah_angsuran');
+		$jasa =	$this->input->post('jasa');
 
 		$data = array(
 			'id_keuangan' => $id_keuangan,
 			'tgl_simpan' => $tgl_simpan,
+			'tahun' => $tahun,
 			'id_anggota' => $id_anggota,
 			'sim_pokok' => $sim_pokok,
 			'sim_wajib' => $sim_wajib,
 			'thr' => $thr,
 			'pendidikan' => $pendidikan,
-			'rekreasi' => $rekreasi
+			'rekreasi' => $rekreasi,
+			'angsuran' => $jumlah_angsuran,
+			'jasa' => $jasa
+			
+
 		);
 
 

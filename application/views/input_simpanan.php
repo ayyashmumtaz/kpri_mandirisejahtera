@@ -55,8 +55,31 @@ Swal.fire({
         </div>
       </div>
       
+      <div class="col-md-3">
+        <div class="form-group">
+        <label for="last">Tahun</label>
+          <select class="form-control" name="tahun">
+            <option value="<?= date('Y');?>"><?= date('Y');?></option>
+            <option value="<?= date('Y')+1;?>"><?= date('Y')+1;?></option>
+            <option value="<?= date('Y')+2;?>"><?= date('Y')+2;?></option>
+            <option value="<?= date('Y')+3;?>"><?= date('Y')+3;?></option>
+            <option value="<?= date('Y')+4;?>"><?= date('Y')+4;?></option>
+            <option value="<?= date('Y')+5;?>"><?= date('Y')+5;?></option>
+            <option value="<?= date('Y')+6;?>"><?= date('Y')+6;?></option>
+            <option value="<?= date('Y')+7;?>"><?= date('Y')+7;?></option>
+            <option value="<?= date('Y')+8;?>"><?= date('Y')+8;?></option>
+            <option value="<?= date('Y')+9;?>"><?= date('Y')+9;?></option>
+            <option value="<?= date('Y')+10;?>"><?= date('Y')+10;?></option>
+            <option value="<?= date('Y')+11;?>"><?= date('Y')+11;?></option>
+            <option value="<?= date('Y')+12;?>"><?= date('Y')+12;?></option>
+      
+           
+          </select>
+        </div>
+      </div>
+      
 
-      <div class="col-md-5">
+      <div class="col-md-3">
         <div class="form-group">
           <label for="last">NAMA ANGGOTA</label>
            <select class="form-control" name="id_anggota">
@@ -67,7 +90,7 @@ Swal.fire({
         </div>
       </div>
      
-
+<input type="hidden" value="">
 
 
 
@@ -114,7 +137,23 @@ Swal.fire({
           <input class="form-control" type="number" name="rekreasi">
         </div>
       </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Jumlah Pinjaman</label>
+          <input type="number" name="jumlah_angsuran" class="form-control">
+        </div>
 
+        
+      
+        
+
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Jasa</label>
+          <input type="number" name="jasa" class="form-control">
+        </div>
+        </div>
       
   </div>
 

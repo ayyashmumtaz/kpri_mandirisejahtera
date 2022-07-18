@@ -1,6 +1,10 @@
 <script type="text/javascript">
     $(document).ready(function () {
     $('#s').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         rowReorder: {
             selector: 'td:nth-child(2)'
         },
@@ -11,25 +15,40 @@
 
 
 <div class="container">
-    <h3>Data Simpanan</h3>
+    <h3>Data Per Instansi</h3>
+
+  
+   
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>
-                <th>Bulan</th>
+                <th>Nama Anggota</th>
                 <th>Tahun</th>
-                <th>Simpanan Pokok</th>
-                <th>Simpanan Wajib</th>
-                <th>THR</th>
-                <th>Pendidikan</th>
-                <th>Rekreasi</th>
-            </tr>
+                <th>Angsuran</th>
+                <th>Jasa</th>
         </thead>
         <tbody>
-        <?php
+        <div class="row">
+    <div class="col-md-4">
+    <?php
             foreach($user as $b){
             ?>
-            Nama : <?=$b->nama_anggota?>
-            <p>Instansi : <?=$b->nama_sekolah?></p>
+             <p>Instansi : <?=$b->nama_sekolah?></p>
+    <select class="form-control" name="tgl" onchange="location = this.value;">
+            <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari');?>">Februari</option>
+            <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari');?>">Februari</option>
+            <option <?php if ($this->uri->segment(4) == 'Maret') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Maret');?>">Maret</option>
+            <option <?php if ($this->uri->segment(4) == 'April') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/April');?>">April</option>
+            <option <?php if ($this->uri->segment(4) == 'Mei') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Mei');?>">Mei</option>
+            <option <?php if ($this->uri->segment(4) == 'Juni') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juni');?>">Juni</option>
+            <option <?php if ($this->uri->segment(4) == 'Juli') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juli');?>">Juli</option>
+
+          
+          </select>
+          
+    </div>
+  
+    </div>
             <?php } ?>
 
             <?php
@@ -38,40 +57,20 @@
           
             <tr>
               
-                <td><?= $b->tgl_simpan;?>
+                <td><?= $b->nama_anggota;?>
              </td>
                 <td><?= $b->tahun;?>
                 <td><?php
-                        $angka = $b->sim_pokok ;
+                        $angka = $b->angsuran ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;?></td>
                 <td><?php
-                        $angka = $b->sim_wajib ;
+                        $angka = $b->jasa ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;?></td>
-                <td>
-                <?php
-                        $angka = $b->thr ;
 
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?>
-                      </td>
-                <td>
-                <?php
-                        $angka = $b->pendidikan ;
-
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?>
-                </td>
-                <td>
-                <?php
-                        $angka = $b->rekreasi ;
-
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?>
-                </td>
                        
         <?php }?>
         </tbody>
