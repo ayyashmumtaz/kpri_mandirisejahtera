@@ -23,6 +23,12 @@
                     <span>Beranda</span></a>
             </li>
                
+            <li class="nav-item">
+                <a class="nav-link" href="<?= site_url('Simpanan/input_rat');?>">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Input RAT</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -58,28 +64,15 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Simpanan/input');?>">Input Data Simpanan</a>
+                        <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Angsuran</a>
                         <a class="collapse-item" href="<?= site_url('Simpanan/data');?>">Data Simpanan</a>
                         <a class="collapse-item" href="<?= site_url('Angsuran/data');?>">Data Angsuran</a>
                     </div>
                 </div>
             </li>
 
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#angsuran"
-                    aria-expanded="true" aria-controls="angsuran">
-                    <i class="fas fa-fw fa-dollar-sign"></i>
-                    <span>Angsuran</span>
-                </a>
-                <div id="angsuran" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Angsuran</a>
-                        <a class="collapse-item" href="<?= site_url('Angsuran');?>">Data Angsuran</a>
-                    </div>
-                </div>
-            </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pembayaran"
                     aria-expanded="true" aria-controls="pembayaran">
                     <i class="fas fa-fw fa-dollar-sign"></i>
@@ -92,7 +85,7 @@
                         <a class="collapse-item" href="<?= site_url('Pembayaran');?>">Data Pembayaran</a>
                     </div>
                 </div>
-            </li> -->
+            </li> --> 
 
             <!-- Divider -->
 

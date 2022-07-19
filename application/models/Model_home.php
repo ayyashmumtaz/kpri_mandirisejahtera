@@ -77,10 +77,11 @@ public function getDataPembayaran()
 public function getbyIdSekolah($id, $tgl, $tahun)
   {
     $where = array('tgl_simpan' => $tgl, 'id' => $id, 'tahun' => $tahun);
-   $this->db->select('*');
+   $this->db->select('*, SUM(sim_pokok+sim_wajib+thr+pendidikan+rekreasi+angsuran+jasa) as total_tabungan');
     $this->db->from('sekolah');
     $this->db->join('anggota', 'sekolah.id = anggota.id_sekolah');
     $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
+    $this->db->group_by("anggota.id_anggota");
     $this->db->where($where);
     $query = $this->db->get();
     return $query->result();

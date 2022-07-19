@@ -23,9 +23,8 @@
         <thead>
             <tr>
                 <th>Nama Anggota</th>
-                <th>Tahun</th>
-                <th>Angsuran</th>
-                <th>Jasa</th>
+                <th>Total</th>
+         
         </thead>
         <tbody>
         <?php
@@ -92,17 +91,12 @@
               
                 <td><?= $b->nama_anggota;?>
              </td>
-                <td><?= $b->tahun;?>
                 <td><?php
                         $angka = $b->angsuran ;
 
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                $hasil_rupiah = "Rp " . number_format($b->total_tabungan,0,',','.');
                 echo $hasil_rupiah;?></td>
-                <td><?php
-                        $angka = $b->jasa ;
 
-                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                echo $hasil_rupiah;?></td>
 
                        
         <?php }?>

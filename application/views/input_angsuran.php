@@ -32,29 +32,7 @@ Swal.fire({
 
           <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_angsuran" readonly>
    
-
       <div class="col-md-4">
-        <div class="form-group">
-          <label for="last">BULAN INPUT</label>
-          <select class="form-control" name="bulan">
-          <option value="Januari">Januari</option>
-            <option value="Februari">Februari</option>
-            <option value="Maret">Maret</option>
-            <option value="April">April</option>
-            <option value="Mei">Mei</option>
-            <option value="Juni">Juni</option>
-            <option value="Juli">Juli</option>
-            <option value="Agustus">Agustus</option>
-            <option value="September">September</option>
-            <option value="Oktober">Oktober</option>
-            <option value="November">November</option>
-            <option value="Desember">Desember</option>
-          </select>
-        </div>
-      </div>
-      
-
-      <div class="col-md-5">
         <div class="form-group">
           <label for="last">NAMA ANGGOTA</label>
            <select class="form-control" name="id_anggota">
@@ -65,8 +43,30 @@ Swal.fire({
         </div>
       </div>
      
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="last">Jenis Angsuran</label>
+           <select class="form-control" name="id_anggota">
+                  <option value="1">Cicil Pinjaman</option>
+                  <option value="2">Tutup Pinjaman</option>
+              </select>
+        </div>
+      </div>
 
+      
+        
+      
+        
 
+      </div>
+      <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="last">Sisa Pinjaman</label>
+          <input type="number" name="angsuran" class="form-control">
+
+        </div>
+      </div>
 
 
   
@@ -76,17 +76,9 @@ Swal.fire({
           <input type="number" name="jumlah_angsuran" class="form-control">
         </div>
 
-        
-      
-        
 
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="last">Jasa</label>
-          <input type="number" name="jasa" class="form-control">
-        </div>
-        </div>
+     </div>
+
 
       </div>
   
