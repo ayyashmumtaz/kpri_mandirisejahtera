@@ -128,14 +128,14 @@ MANDIRI SEJAHTERA</p>
                   <div class="card-body"><a class="text-danger" href="catagory.html">
                     <span>Sisa Angsuran</span></a>
                     <Small>
-                    <?php foreach ($angsuran as $a) : ?>
+             
                     
                     <?php
                       $angka = $a['angsuran'] ;
 
               $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
               echo $hasil_rupiah;
-             ?><?php endforeach; ?></Small></div>
+             ?></Small></div>
                 </div>
               </div>
             </div>

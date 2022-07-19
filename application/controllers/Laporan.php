@@ -324,7 +324,8 @@ class Laporan extends CI_Controller {
   public function rekap_instansi()
 	{
     $tgl = $this->uri->segment(3);
-	  $data['sekolah'] = $this->Model_home->getDataInstansi($tgl)->result();
+    $tahun = $this->uri->segment(4);
+	  $data['sekolah'] = $this->Model_home->getDataInstansi($tgl, $tahun)->result();
 	  $this->load->view('_partials/header');
     $this->load->view('_partials/navbar');
     $this->load->view('lp_instansi', $data);
@@ -374,7 +375,7 @@ class Laporan extends CI_Controller {
      
       ]
     ];
-    $data = $this->Model_home->getAllData($tgl)->result();
+    $data = $this->Model_home->getAllData()->result();
     foreach($data as $data){
     $sheet->setCellValue('A1', "KOPERASI PEGAWAI REPUBLIK INDONESIA"); // Set kolom A1 dengan tulisan "DATA SISWA"
     $sheet->setCellValue('A2', "MANDIRI SEJAHTERA"); // Set kolom A1 dengan tulisan "DATA SISWA"
@@ -385,7 +386,7 @@ class Laporan extends CI_Controller {
     $sheet->mergeCells('A3:C3'); // Set Merge Cell pada kolom A1 sampai E1
     $sheet->mergeCells('A4:C4'); 
     $sheet->mergeCells('A10:C10');// Set bold kolom A1
-   
+    $spreadsheet->getActiveSheet()->getStyle('C12:C28')->getNumberFormat()->setFormatCode('#,##');
     $sheet->getStyle('A10')->getFont()->setBold(true); 
     // Buat header tabel nya pada baris ke 3
     $sheet->setCellValue('A5', "NIK");
@@ -418,6 +419,13 @@ class Laporan extends CI_Controller {
     $sheet->setCellValue('B15', ":");
     $sheet->setCellValue('B16', ":");
     $sheet->setCellValue('B17', ":");
+
+    $sheet->setCellValue('C12', $data->sim_pokok);
+    $sheet->setCellValue('C13', $data->sim_wajib);
+    $sheet->setCellValue('C14', $data->thr);
+    $sheet->setCellValue('C15', $data->pendidikan);
+    $sheet->setCellValue('C16', $data->rekreasi);
+    $sheet->setCellValue('C17', $data->angsuran);
 
     $sheet->setCellValue('A19', "KEADAAN BULAN INI");
     $sheet->setCellValue('A21', "Simpanan Pokok");

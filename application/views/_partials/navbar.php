@@ -109,7 +109,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Laporan/anggota');?>">Laporan Peranggota</a>
                         <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Laporan Persekolah</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/rekap_instansi/Januari');?>">Rekap Tagihan Instansi</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/rekap_instansi/Januari/2022');?>">Rekap Tagihan Instansi</a>
                         <a class="collapse-item" href="<?= site_url('Laporan/rekap_anggota/Januari');?>">Kartu Tagihan Anggota</a>
 
 

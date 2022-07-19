@@ -38,18 +38,19 @@
     <div class="col-md-2">
 
     <select class="form-control" name="tgl" onchange="location = this.value;">
-            <option <?php if ($this->uri->segment(4) == 'Januari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Januari');?>">Januari</option>
-            <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari');?>">Februari</option>
-            <option <?php if ($this->uri->segment(4) == 'Maret') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Maret');?>">Maret</option>
-            <option <?php if ($this->uri->segment(4) == 'April') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/April');?>">April</option>
-            <option <?php if ($this->uri->segment(4) == 'Mei') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Mei');?>">Mei</option>
-            <option <?php if ($this->uri->segment(4) == 'Juni') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juni');?>">Juni</option>
-            <option <?php if ($this->uri->segment(4) == 'Juli') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juli');?>">Juli</option>
-            <option <?php if ($this->uri->segment(4) == 'Agustus') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Agustus');?>">Agustus</option>
-            <option <?php if ($this->uri->segment(4) == 'September') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/September');?>">September</option>
-            <option <?php if ($this->uri->segment(4) == 'Oktober') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Oktober');?>">Oktober</option>
-            <option <?php if ($this->uri->segment(4) == 'November') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/November');?>">November</option>
-            <option <?php if ($this->uri->segment(4) == 'Desember') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Desember');?>">Desember</option>     
+   
+            <option <?php if ($this->uri->segment(4) == 'Januari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Januari/'.$this->uri->segment(5));?>">Januari</option>
+            <option <?php if ($this->uri->segment(4) == 'Februari') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Februari/'.$this->uri->segment(5));?>">Februari</option>
+            <option <?php if ($this->uri->segment(4) == 'Maret') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Maret/'.$this->uri->segment(5));?>">Maret</option>
+            <option <?php if ($this->uri->segment(4) == 'April') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/April/'.$this->uri->segment(5));?>">April</option>
+            <option <?php if ($this->uri->segment(4) == 'Mei') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Mei/'.$this->uri->segment(5));?>">Mei</option>
+            <option <?php if ($this->uri->segment(4) == 'Juni') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juni/'.$this->uri->segment(5));?>">Juni</option>
+            <option <?php if ($this->uri->segment(4) == 'Juli') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Juli/'.$this->uri->segment(5));?>">Juli</option>
+            <option <?php if ($this->uri->segment(4) == 'Agustus') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Agustus/'.$this->uri->segment(5));?>">Agustus</option>
+            <option <?php if ($this->uri->segment(4) == 'September') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/September/'.$this->uri->segment(5));?>">September</option>
+            <option <?php if ($this->uri->segment(4) == 'Oktober') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Oktober/'.$this->uri->segment(5));?>">Oktober</option>
+            <option <?php if ($this->uri->segment(4) == 'November') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/November/'.$this->uri->segment(5));?>">November</option>
+            <option <?php if ($this->uri->segment(4) == 'Desember') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/Desember/'.$this->uri->segment(5));?>">Desember</option>     
           </select>
           
     </div>
@@ -61,6 +62,7 @@
             ?>
             
     <select class="form-control" name="tgl" onchange="location = this.value;">
+    <option value="" selected disabled>-- Pilih Tahun --</option>
             <option <?php if ($this->uri->segment(5) == '2022') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2022');?>">2022</option>
             <option <?php if ($this->uri->segment(5) == '2023') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2023');?>">2023</option>
             <option <?php if ($this->uri->segment(5) == '2024') { echo 'selected'; }?> value="<?= site_url('Laporan/lihat_instansi/'.$b->id.'/'.$this->uri->segment(4).'/2024');?>">2024</option>

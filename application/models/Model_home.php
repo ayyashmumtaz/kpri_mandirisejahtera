@@ -20,26 +20,26 @@ public function getDataAngsuran()
     $query = $this->db->get();
     return $query;
 }
-public function getAllData($tgl)
+public function getAllData()
 	{
-    $where = array('tgl_simpan' => $tgl);
+    // $where = array('tgl_simpan' => $tgl);
 	  $this->db->select('*');
     $this->db->from('anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
-    $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
-    $this->db->where($where);
-    $this->db->order_by("id_keuangan", "DESC");
+    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+    // $this->db->where($where);
     $query = $this->db->get();
     return $query;
 }
 
-public function getDataInstansi($tgl)
+public function getDataInstansi($tgl, $tahun)
 	{
-    $where = array('tgl_simpan' => $tgl);
-	  $this->db->select('*');
+    $where = array('tgl_simpan' => $tgl, 'tahun' => $tahun);
+	  $this->db->select('id_sekolah,nama_sekolah,SUM(sim_pokok+sim_wajib+thr+pendidikan+rekreasi+angsuran+jasa) as total_tabungan');
     $this->db->from('sekolah');
-    $this->db->join('riwayat_tabungan', 'sekolah.id = riwayat_tabungan.id_sekolah', 'left outer');
+    $this->db->join('riwayat_tabungan', 'sekolah.id = riwayat_tabungan.id_sekolah', 'left');
     $this->db->where($where);
+    $this->db->group_by("id_sekolah");
     $query = $this->db->get();
     return $query;
 }
@@ -188,15 +188,10 @@ public function totalAnggotaTAktif()
 public function getDataSimpananUser()
 {
   $name = $this->session->userdata('id_anggota');
-  $month = date('m');
   $tab = array('id_anggota' => $name);
-
- 
   $this->db->select('*');
   $this->db->where($tab);
    $this->db->from('tabungan');  
-   $this->db->limit(1);
-   $this->db->order_by("id_keuangan", "DESC");
    $query = $this->db->get();
    return $query->result_array();
 }
