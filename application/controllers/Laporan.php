@@ -126,7 +126,7 @@ class Laporan extends CI_Controller {
               $sheet->setCellValue('H'.$numrow, $data->pendidikan);
               $sheet->setCellValue('I'.$numrow, $data->rekreasi);
               $sheet->setCellValue('J'.$numrow, $data->angsuran);
-              $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
+              // $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
               $sheet->setCellValue('L'.$numrow, $data->jasa);
 
               $sheet->setCellValue('M'.$numrow, $data->sim_pokok + $data->sim_wajib + $data->thr + $data->pendidikan + $data->rekreasi + $data->angsuran + $data->angsuran_barang + $data->jasa);
