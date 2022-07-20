@@ -106,6 +106,14 @@ class Simpanan extends CI_Controller {
     $this->load->view('_partials/footer');
 	}
 
+	public function jsonGetAnggota()
+{
+		$id = $this->input->get('id_anggota');
+        $cari = $this->Model_home->jsonAnggota($id);
+        echo json_encode($cari);
+  
+}
+
 }
 
 /* End of file Simpanan.php */

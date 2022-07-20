@@ -74,6 +74,23 @@ public function getDataPembayaran()
     return $query->result();
 }
 
+function cari($id){
+  $query= $this->db->get_where('anggota',array('id_anggota'=>$id));
+  return $query;
+}
+
+public function jsonAnggota($id)
+{
+ $this->db->select('*');
+  $this->db->from('anggota');
+  $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
+  $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+  $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
+  $this->db->where('anggota.id_anggota', $id);
+  $query = $this->db->get();
+  return $query->result();
+}
+
 public function getbyIdSekolah($id, $tgl, $tahun)
   {
     $where = array('tgl_simpan' => $tgl, 'id' => $id, 'tahun' => $tahun);

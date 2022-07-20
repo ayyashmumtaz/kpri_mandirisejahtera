@@ -46,7 +46,7 @@
     <script src="<?= base_url('');?>/assets/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url('');?>/assets/vendor/chart.js/Chart.min.js"></script>
+    <!-- <script src="<?= base_url('');?>/assets/vendor/chart.js/Chart.min.js"></script> -->
 
     <script type="text/javascript" src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
@@ -60,8 +60,7 @@
 
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url('');?>/assets/js/demo/chart-area-demo.js"></script>
-    <script src="<?= base_url('');?>/assets/js/demo/chart-pie-demo.js"></script>
+    
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

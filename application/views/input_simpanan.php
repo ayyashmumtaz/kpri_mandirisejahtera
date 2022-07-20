@@ -82,15 +82,16 @@ Swal.fire({
       <div class="col-md-3">
         <div class="form-group">
           <label for="last">NAMA ANGGOTA</label>
-           <select class="form-control" name="id_anggota">
-            <option selected disabled>-- PILIH ANGGOTA --</option>
-                  <?php foreach($anggota as $i){ ?>
-                  <option value="<?php echo $i['id_anggota']; ?>"><?php echo $i['nama_anggota']; ?></option>
+           <select class="form-control" name="id_anggota" id="id_anggota" onchange="return autofill();">
+            <option disabled>-- PILIH ANGGOTA --</option>
+                 <?php foreach($anggota as $i){ ?>
+                  <option value="<?php echo $i['id_anggota']; ?>" id="ango"><?php echo $i['nama_anggota']; ?></option>
                   <?php } ?></select>
         </div>
       </div>
      
-<input type="hidden" value="">
+
+
 
 
 
@@ -98,7 +99,7 @@ Swal.fire({
      <div class="col-md-3">
         <div class="form-group">
           <label for="last">Simpanan Pokok</label>
-          <input type="number" name="sim_pokok" class="form-control">
+          <input type="number" name="sim_pokok" id="sim_pokok" class="form-control">
         </div>
       
         
@@ -108,17 +109,23 @@ Swal.fire({
          <div class="col-md-3">       
         <div class="form-group">
           <label for="last">Simpanan Wajib</label>
-          <input class="form-control" type="number" name="sim_wajib">
+          <input class="form-control" type="number" id="sim_wajib" name="sim_wajib">
         </div>
       </div>
 
  <div class="col-md-3">       
         <div class="form-group">
           <label for="last">THR (Tunjangan Hari Raya)</label>
-          <input class="form-control" type="number" name="thr" >
+          <input class="form-control" type="number" id="thr" name="thr" >
         </div>
       </div>
-
+      
+      <div class="col-md-3">       
+        <div class="form-group">
+          <label for="last">Sisa Pinjaman</label>
+          <input class="form-control" type="number" id="sisa_pinjam" readonly >
+        </div>
+      </div>
       </div>
   
 
@@ -127,20 +134,20 @@ Swal.fire({
         <div class="col-md-3">       
         <div class="form-group">
           <label for="last">Pendidikan</label>
-          <input class="form-control" type="number" name="pendidikan">
+          <input class="form-control" type="number" id="pendidikan" name="pendidikan">
         </div>
       </div>
 
  <div class="col-md-3">       
         <div class="form-group">
           <label for="last">Rekreasi</label>
-          <input class="form-control" type="number" name="rekreasi">
+          <input class="form-control" type="number" id="rekreasi" name="rekreasi">
         </div>
       </div>
       <div class="col-md-3">
         <div class="form-group">
           <label for="last">Jumlah Pinjaman</label>
-          <input type="number" name="jumlah_angsuran" class="form-control">
+          <input type="number" name="jumlah_angsuran" id="jumlah_pinjam" onkeypress="return autofill();" class="form-control">
         </div>
 
         
@@ -151,7 +158,7 @@ Swal.fire({
       <div class="col-md-3">
         <div class="form-group">
           <label for="last">Jasa</label>
-          <input type="number" name="jasa" class="form-control">
+          <input type="number" name="jasa" id="jasa" class="form-control">
         </div>
         </div>
       
@@ -161,5 +168,41 @@ Swal.fire({
 </div>
 </form>
 
+<script>
+  function autofill(){
+        var id = document.getElementById('id_anggota').value;
+        $.ajax({
+                       url:"<?php echo site_url();?>/Simpanan/jsonGetAnggota",
+                       data:'&id_anggota='+id,
+                       success:function(data){
+                           var hasil = JSON.parse(data);  
+                     
+                     
+            $.each(hasil, function(key,val){ 
+              console.log(hasil);
 
+                document.getElementById('sim_wajib').value=hasil[0].sim_wajib; 
+                document.getElementById('sim_pokok').value=hasil[0].sim_pokok; 
+                document.getElementById('thr').value=hasil[0].thr;
+                document.getElementById('pendidikan').value=hasil[0].pendidikan;
+                document.getElementById('rekreasi').value=hasil[0].rekreasi;
+                document.getElementById('sisa_pinjam').value=hasil[0].total_angsuran;
 
+                var sisa = parseInt(document.getElementById('sisa_pinjam').value=hasil[0].total_angsuran);
+
+                var jml_pinjam = parseInt(document.getElementById('jumlah_pinjam').value);
+                var sbl_jasa = sisa + jml_pinjam;
+
+                var jasa = sbl_jasa * 0.3;
+
+                document.getElementById('jasa').value=jasa;
+
+                                
+                     
+                });
+            }
+                   });
+                   
+    }
+    
+</script>

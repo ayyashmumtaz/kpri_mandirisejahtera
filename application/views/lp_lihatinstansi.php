@@ -97,7 +97,7 @@
                 $hasil_rupiah = "Rp " . number_format($b->total_tabungan,0,',','.');
                 echo $hasil_rupiah;?></td>
 
-
+ 
                        
         <?php }?>
         </tbody>
