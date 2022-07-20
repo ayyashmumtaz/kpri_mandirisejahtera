@@ -20,14 +20,14 @@ public function getDataAngsuran()
     $query = $this->db->get();
     return $query;
 }
-public function getAllData()
+public function getAllData($tgl)
 	{
-    // $where = array('tgl_simpan' => $tgl);
+    $where = array('tgl_simpan' => $tgl);
 	  $this->db->select('*');
     $this->db->from('anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
-    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
-    // $this->db->where($where);
+    $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
+    $this->db->where($where);
     $query = $this->db->get();
     return $query;
 }
@@ -85,6 +85,16 @@ public function jsonAnggota($id)
   $this->db->from('anggota');
   $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
   $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
+  $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
+  $this->db->where('anggota.id_anggota', $id);
+  $query = $this->db->get();
+  return $query->result();
+}
+
+public function jsonAnggotaOnly($id)
+{
+ $this->db->select('*');
+  $this->db->from('anggota');
   $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
   $this->db->where('anggota.id_anggota', $id);
   $query = $this->db->get();

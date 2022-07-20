@@ -375,7 +375,7 @@ class Laporan extends CI_Controller {
      
       ]
     ];
-    $data = $this->Model_home->getAllData()->result();
+    $data = $this->Model_home->getAllData($tgl)->result();
     foreach($data as $data){
     $sheet->setCellValue('A1', "KOPERASI PEGAWAI REPUBLIK INDONESIA"); // Set kolom A1 dengan tulisan "DATA SISWA"
     $sheet->setCellValue('A2', "MANDIRI SEJAHTERA"); // Set kolom A1 dengan tulisan "DATA SISWA"
@@ -445,6 +445,14 @@ class Laporan extends CI_Controller {
     $sheet->setCellValue('B26', ":");
     $sheet->setCellValue('B27', ":");
     $sheet->setCellValue('B28', ":");
+
+    $sheet->setCellValue('C21', $data->sim_pokok);
+    $sheet->setCellValue('C22', $data->sim_wajib);
+    $sheet->setCellValue('C23', $data->thr);
+    $sheet->setCellValue('C24', $data->pendidikan);
+    $sheet->setCellValue('C25', $data->rekreasi);
+    $sheet->setCellValue('C26', $data->angsuran);
+    
     // Apply style header yang telah kita buat tadi ke masing-masing kolom header
     // $spreadsheet->getActiveSheet()->getStyle('A4:Z70')->getNumberFormat()->setFormatCode('#,##');
     $sheet->getStyle('A1')->applyFromArray($style_col);

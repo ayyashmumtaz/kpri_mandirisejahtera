@@ -35,7 +35,7 @@ Swal.fire({
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">NAMA ANGGOTA</label>
-           <select class="form-control" name="id_anggota">
+           <select class="form-control" name="id_anggota" id="id_anggota" onchange="return autofill();">
             <option selected disabled>-- PILIH ANGGOTA --</option>
                   <?php foreach($anggota as $i){ ?>
                   <option value="<?php echo $i['id_anggota']; ?>"><?php echo $i['nama_anggota']; ?></option>
@@ -46,24 +46,22 @@ Swal.fire({
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">Jenis Angsuran</label>
-           <select class="form-control" name="id_anggota">
+           <select class="form-control" name="jenis_angsuran" id="jenis_angsuran" onchange="return autofill();">
                   <option value="1">Cicil Pinjaman</option>
-                  <option value="2">Tutup Pinjaman</option>
+                  <option value="2" >Tutup Pinjaman</option>
               </select>
         </div>
       </div>
 
       
-        
-      
-        
+
 
       </div>
       <div class="row">
      <div class="col-md-4">
         <div class="form-group">
           <label for="last">Sisa Pinjaman</label>
-          <input type="number" name="angsuran" class="form-control">
+          <input type="number" name="angsuran" id="sisa_pinjam" class="form-control" readonly>
 
         </div>
       </div>
@@ -73,7 +71,7 @@ Swal.fire({
      <div class="col-md-5">
         <div class="form-group">
           <label for="last">Jumlah Pinjaman</label>
-          <input type="number" name="jumlah_angsuran" class="form-control">
+          <input type="number" name="jumlah_angsuran" id="jumlah_angsuran" class="form-control">
         </div>
 
 
@@ -91,3 +89,36 @@ Swal.fire({
 
 
 
+<script>
+  function autofill(){
+        var id = document.getElementById('id_anggota').value;
+        $.ajax({
+          
+                       url:"<?php echo site_url();?>/Simpanan/jsonGetAnggota",
+                       data:'&id_anggota='+id,
+                       success:function(data){
+                           var hasil = JSON.parse(data);  
+                     
+                     
+            $.each(hasil, function(key,val){ 
+              console.log(hasil);
+
+         
+                document.getElementById('sisa_pinjam').value=hasil[0].total_angsuran;
+
+       
+
+                if(document.getElementById('jenis_angsuran').value == "2") 
+        {
+          document.getElementById('jumlah_angsuran').value=hasil[0].total_angsuran;
+        }
+
+                                
+                     
+                });
+            }
+                   });
+                 
+    }
+    
+</script>

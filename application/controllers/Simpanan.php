@@ -29,6 +29,7 @@ class Simpanan extends CI_Controller {
 		$tgl_simpan =	$this->input->post('tgl_simpan');
 		$tahun =	$this->input->post('tahun');
 		$id_anggota =	$this->input->post('id_anggota');
+		$id_sekolah = 	$this->input->post('id_sekolah');
 		$sim_pokok =	$this->input->post('sim_pokok');
 		$sim_wajib =	$this->input->post('sim_wajib');
 		$thr =	$this->input->post('thr');
@@ -42,6 +43,7 @@ class Simpanan extends CI_Controller {
 			'tgl_simpan' => $tgl_simpan,
 			'tahun' => $tahun,
 			'id_anggota' => $id_anggota,
+			'id_sekolah' => $id_sekolah,
 			'sim_pokok' => $sim_pokok,
 			'sim_wajib' => $sim_wajib,
 			'thr' => $thr,
@@ -56,13 +58,14 @@ class Simpanan extends CI_Controller {
 		$data1 = array(
 			'id_keuangan' => $id_keuangan,
 			'id_anggota' => $id_anggota,
-			'sim_pokok' => $sim_pokok,
-			'sim_wajib' => $sim_wajib,
-			'thr' => $thr,
-			'pendidikan' => $pendidikan,
-			'rekreasi' => $rekreasi,
-			'angsuran' => $jumlah_angsuran,
-			'jasa' => $jasa
+			'id_sekolah' => $id_sekolah,
+			'total_sim_pokok' => $sim_pokok,
+			'total_sim_wajib' => $sim_wajib,
+			'total_thr' => $thr,
+			'total_pendidikan' => $pendidikan,
+			'total_rekreasi' => $rekreasi,
+			'total_angsuran' => $jumlah_angsuran,
+			'total_jasa' => $jasa
 			
 
 		);
@@ -110,6 +113,14 @@ class Simpanan extends CI_Controller {
 {
 		$id = $this->input->get('id_anggota');
         $cari = $this->Model_home->jsonAnggota($id);
+        echo json_encode($cari);
+  
+}
+
+public function jsonGetAnggotaOnly()
+{
+		$id = $this->input->get('id_anggota');
+        $cari = $this->Model_home->jsonAnggotaOnly($id);
         echo json_encode($cari);
   
 }

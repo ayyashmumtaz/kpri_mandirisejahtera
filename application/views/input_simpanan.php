@@ -92,7 +92,7 @@ Swal.fire({
      
 
 
-
+          <input type="hidden" name="id_sekolah" id="id_sekolah">
 
 
   
@@ -115,7 +115,7 @@ Swal.fire({
 
  <div class="col-md-3">       
         <div class="form-group">
-          <label for="last">THR (Tunjangan Hari Raya)</label>
+          <label for="last">THR (Tabungan Hari Raya)</label>
           <input class="form-control" type="number" id="thr" name="thr" >
         </div>
       </div>
@@ -123,7 +123,7 @@ Swal.fire({
       <div class="col-md-3">       
         <div class="form-group">
           <label for="last">Sisa Pinjaman</label>
-          <input class="form-control" type="number" id="sisa_pinjam" readonly >
+          <input class="form-control" type="number" name="jumlah_angsuran" id="sisa_pinjam" readonly >
         </div>
       </div>
       </div>
@@ -149,11 +149,12 @@ Swal.fire({
           <label for="last">Jumlah Pinjaman</label>
           <input type="number" name="jumlah_angsuran" id="jumlah_pinjam" onkeypress="return autofill();" class="form-control">
         </div>
-
-        
-      
-        
-
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Angsuran Pokok</label>
+          <input type="number" name="angsuran_pokok" id="angsuran_pokok" onkeypress="return autofill();" class="form-control">
+        </div>
       </div>
       <div class="col-md-3">
         <div class="form-group">
@@ -181,6 +182,45 @@ Swal.fire({
             $.each(hasil, function(key,val){ 
               console.log(hasil);
 
+                document.getElementById('id_sekolah').value = hasil[0].id_sekolah;
+                document.getElementById('sim_wajib').value=hasil[0].sim_wajib; 
+                document.getElementById('sim_pokok').value=hasil[0].sim_pokok; 
+                document.getElementById('thr').value=hasil[0].thr;
+                document.getElementById('pendidikan').value=hasil[0].pendidikan;
+                document.getElementById('rekreasi').value=hasil[0].rekreasi;
+                document.getElementById('sisa_pinjam').value=hasil[0].total_angsuran;
+                document.getElementById('angsuran_pokok').value=hasil[0].angsuran_pokok;
+
+                var sisa = parseInt(document.getElementById('sisa_pinjam').value=hasil[0].total_angsuran);
+
+                var jml_pinjam = parseInt(document.getElementById('jumlah_pinjam').value);
+                var sbl_jasa = sisa + jml_pinjam;
+
+                var jasa = sbl_jasa * 0.3;
+
+                document.getElementById('jasa').value=jasa;
+
+                                
+                     
+                });
+            }
+                   });
+                   
+    }
+
+      function autofill(){
+        var id = document.getElementById('id_anggota').value;
+        $.ajax({
+                       url:"<?php echo site_url();?>/Simpanan/jsonGetAnggota",
+                       data:'&id_anggota='+id,
+                       success:function(data){
+                           var hasil = JSON.parse(data);  
+                     
+                     
+            $.each(hasil, function(key,val){ 
+              console.log(hasil);
+
+                document.getElementById('id_sekolah').value = hasil[0].id_sekolah;
                 document.getElementById('sim_wajib').value=hasil[0].sim_wajib; 
                 document.getElementById('sim_pokok').value=hasil[0].sim_pokok; 
                 document.getElementById('thr').value=hasil[0].thr;
@@ -199,6 +239,22 @@ Swal.fire({
 
                                 
                      
+                });
+            }
+                   });
+
+                   $.ajax({
+                       url:"<?php echo site_url();?>/Simpanan/jsonGetAnggotaOnly",
+                       data:'&id_anggota='+id,
+                       success:function(data){
+                           var hasil = JSON.parse(data);  
+                     
+                     
+            $.each(hasil, function(key,val){ 
+              console.log(hasil[0].id_sekolah);
+
+                document.getElementById('id_sekolah').value = hasil[0].id_sekolah;
+                                            
                 });
             }
                    });
