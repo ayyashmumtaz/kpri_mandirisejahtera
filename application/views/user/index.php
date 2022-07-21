@@ -61,7 +61,7 @@ MANDIRI SEJAHTERA</p>
                   <div class="card-body"><a class="text-danger" href="catagory.html">
                      <span>Simpanan Wajib</span></a>
                     <Small><?php
-                        $angka = $a['sim_wajib'] ;
+                        $angka = $a['total_sim_wajib'] ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;
@@ -74,7 +74,7 @@ MANDIRI SEJAHTERA</p>
                   <div class="card-body"><a href="catagory.html">
                       <span>Simpanan Pokok</span></a>
                       <Small><?php
-                        $angka = $a['sim_pokok'] ;
+                        $angka = $a['total_sim_pokok'] ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;
@@ -91,7 +91,7 @@ MANDIRI SEJAHTERA</p>
                   <div class="card-body"><a class="text-danger" href="catagory.html">
                     <span>THR</span></a>
                     <Small><?php
-                        $angka = $a['thr'] ;
+                        $angka = $a['total_thr'] ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;
@@ -104,7 +104,7 @@ MANDIRI SEJAHTERA</p>
                   <div class="card-body"><a class="text-info" href="catagory.html">
                     <span>Pendidikan</span></a>
                     <Small><?php
-                        $angka = $a['pendidikan'] ;
+                        $angka = $a['total_pendidikan'] ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;
@@ -116,7 +116,7 @@ MANDIRI SEJAHTERA</p>
                   <div class="card-body"><a class="text-danger" href="catagory.html">
                     <span>Rekreasi</span></a>
                     <Small><?php
-                        $angka = $a['rekreasi'] ;
+                        $angka = $a['total_rekreasi'] ;
 
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;
@@ -131,7 +131,7 @@ MANDIRI SEJAHTERA</p>
              
                     
                     <?php
-                      $angka = $a['angsuran'] ;
+                      $angka = $a['total_angsuran'] ;
 
               $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
               echo $hasil_rupiah;

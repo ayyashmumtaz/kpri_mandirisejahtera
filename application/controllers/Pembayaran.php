@@ -33,17 +33,18 @@ class Pembayaran extends CI_Controller {
     {
         $id_anggota = $this->input->post('id_anggota');
         $id_pembayaran = $this->input->post('id_pembayaran');
-        $tgl_bayar = $this->input->post('tgl_bayar');
+        $tgl_simpan = $this->input->post('tgl_simpan');
+
         $jumlah = $this->input->post('jumlah');
         $data = array(
             'id_pembayaran' => $id_pembayaran,
             'id_anggota' => $id_anggota,
-            'tgl_bayar' => $tgl_bayar,
+            'tgl_simpan' => $tgl_simpan,
             'jumlah' => $jumlah
         );
         $this->Model_home->input_data($data, 'pembayaran');
         $this->session->set_flashdata('order_berhasil', ' ');
-        redirect('Pembayaran');
+        redirect('Angsuran/input');
     }
 }
 

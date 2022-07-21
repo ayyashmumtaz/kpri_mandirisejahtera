@@ -43,12 +43,10 @@ Swal.fire({
         <thead>
             <tr>
             <th>NIK</th>
-            <th>Tanggal Pembayaran</th>
+            <th>Bulan Pembayaran</th>
                 <th>Nama Anggota</th>
               
                 <th>Jumlah Pembayaran</th>
-                <th>Status</th>
-                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +55,7 @@ Swal.fire({
             ?>
             <tr>
             <td><?= $b->nik?></td>
-            <td><?= $b->tgl_bayar?></td>
+            <td><?= $b->tgl_simpan?></td>
                 <td><?= $b->nama_anggota?></td>
                 
                 <td><?php
@@ -66,12 +64,10 @@ Swal.fire({
                 $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                 echo $hasil_rupiah;
                ?></td>
-                <td></td>
+               
 
                 
-                  <td>
-                  
-                      </td>
+                 
                        
         <?php }?>
         </tbody>

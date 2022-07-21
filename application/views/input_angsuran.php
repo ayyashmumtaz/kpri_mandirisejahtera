@@ -24,13 +24,13 @@ Swal.fire({
 <div class="container">
   <h3>Input Pinjaman</h3>
   <br>
-         <form action="<?= site_url('Angsuran/tambah_angsuran');?>" method="post" enctype="multipart/form-data">
+         <form action="<?= site_url('Pembayaran/proses_input');?>" method="post" enctype="multipart/form-data">
    <div class="row">
 
   
 
 
-          <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_angsuran" readonly>
+          <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_pembayaran" readonly>
    
       <div class="col-md-4">
         <div class="form-group">
@@ -42,8 +42,27 @@ Swal.fire({
                   <?php } ?></select>
         </div>
       </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="last">BULAN INPUT</label>
+          <select class="form-control" name="tgl_simpan">
+            <option value="Januari">Januari</option>
+            <option value="Februari">Februari</option>
+            <option value="Maret">Maret</option>
+            <option value="April">April</option>
+            <option value="Mei">Mei</option>
+            <option value="Juni">Juni</option>
+            <option value="Juli">Juli</option>
+            <option value="Agustus">Agustus</option>
+            <option value="September">September</option>
+            <option value="Oktober">Oktober</option>
+            <option value="November">November</option>
+            <option value="Desember">Desember</option>
+          </select>
+        </div>
+      </div>
      
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label for="last">Jenis Angsuran</label>
            <select class="form-control" name="jenis_angsuran" id="jenis_angsuran" onchange="return autofill();">
@@ -71,7 +90,7 @@ Swal.fire({
      <div class="col-md-5">
         <div class="form-group">
           <label for="last">Jumlah Pinjaman</label>
-          <input type="number" name="jumlah_angsuran" id="jumlah_angsuran" class="form-control">
+          <input type="number" name="jumlah" id="jumlah_angsuran" class="form-control">
         </div>
 
 

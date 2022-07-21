@@ -10,7 +10,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
               
-                <div class="sidebar-brand-text mx-3">KPRI Sejahtera Mandiri</div>
+                <div class="sidebar-brand-text mx-3">KPRI Mandiri Sejahtera</div>
             </a>
 
             <!-- Divider -->
@@ -23,12 +23,7 @@
                     <span>Beranda</span></a>
             </li>
                
-            <li class="nav-item">
-                <a class="nav-link" href="<?= site_url('Simpanan/input_rat');?>">
-                    <i class="fas fa-fw fa-plus"></i>
-                    <span>Input RAT</span>
-                </a>
-            </li>
+       
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -66,6 +61,7 @@
                         <a class="collapse-item" href="<?= site_url('Simpanan/input');?>">Input Data Simpanan</a>
                         <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Angsuran</a>
                         <a class="collapse-item" href="<?= site_url('Simpanan/data');?>">Data Simpanan</a>
+                        <a class="collapse-item" href="<?= site_url('Pembayaran');?>">Data Pembayaran</a>
                         <a class="collapse-item" href="<?= site_url('Angsuran/data');?>">Data Angsuran</a>
                     </div>
                 </div>
@@ -103,7 +99,7 @@
                         <a class="collapse-item" href="<?= site_url('Laporan/anggota');?>">Laporan Peranggota</a>
                         <a class="collapse-item" href="<?= site_url('Laporan/instansi');?>">Laporan Persekolah</a>
                         <a class="collapse-item" href="<?= site_url('Laporan/rekap_instansi/Januari/2022');?>">Rekap Tagihan Instansi</a>
-                        <a class="collapse-item" href="<?= site_url('Laporan/rekap_anggota/Januari');?>">Kartu Tagihan Anggota</a>
+                        <a class="collapse-item" href="<?= site_url('Laporan/kartuAnggota');?>">Kartu Tagihan Anggota</a>
 
 
                     </div>

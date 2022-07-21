@@ -34,7 +34,12 @@ class Laporan extends CI_Controller {
       $this->load->view('_partials/footer');
     }
 
-
+    public function kartuAnggota(){
+      $this->load->view('_partials/header');
+      $this->load->view('_partials/navbar');
+      $this->load->view('kartu_anggota');
+      $this->load->view('_partials/footer');
+    }
 
 
     public function exportAnggota($tgl){
@@ -375,12 +380,14 @@ class Laporan extends CI_Controller {
      
       ]
     ];
+    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+    $numrow = 1;
     $data = $this->Model_home->getAllData($tgl)->result();
     foreach($data as $data){
-    $sheet->setCellValue('A1', "KOPERASI PEGAWAI REPUBLIK INDONESIA"); // Set kolom A1 dengan tulisan "DATA SISWA"
-    $sheet->setCellValue('A2', "MANDIRI SEJAHTERA"); // Set kolom A1 dengan tulisan "DATA SISWA"
-    $sheet->setCellValue('A3', "Kecamatan Klapanunggal Kabupaten Bogor"); 
-    $sheet->setCellValue('A4', "BH. 9512A/PAD/BH/KDK.105/X/2004 Tgl 19/10/2004"); 
+    $sheet->setCellValue('A'.$numrow, "KOPERASI PEGAWAI REPUBLIK INDONESIA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+    $sheet->setCellValue('A'.$numrow, "MANDIRI SEJAHTERA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+    $sheet->setCellValue('A'.$numrow, "Kecamatan Klapanunggal Kabupaten Bogor"); 
+    $sheet->setCellValue('A'.$numrow, "BH. 9512A/PAD/BH/KDK.105/X/2004 Tgl 19/10/2004"); 
     $sheet->mergeCells('A1:C1'); // Set Merge Cell pada kolom A1 sampai E1
     $sheet->mergeCells('A2:C2'); // Set Merge Cell pada kolom A1 sampai E1
     $sheet->mergeCells('A3:C3'); // Set Merge Cell pada kolom A1 sampai E1
@@ -420,12 +427,12 @@ class Laporan extends CI_Controller {
     $sheet->setCellValue('B16', ":");
     $sheet->setCellValue('B17', ":");
 
-    $sheet->setCellValue('C12', $data->sim_pokok);
-    $sheet->setCellValue('C13', $data->sim_wajib);
-    $sheet->setCellValue('C14', $data->thr);
-    $sheet->setCellValue('C15', $data->pendidikan);
-    $sheet->setCellValue('C16', $data->rekreasi);
-    $sheet->setCellValue('C17', $data->angsuran);
+    $sheet->setCellValue('C12', $data->total_sim_pokok);
+    $sheet->setCellValue('C13', $data->total_sim_wajib);
+    $sheet->setCellValue('C14', $data->total_thr);
+    $sheet->setCellValue('C15', $data->total_pendidikan);
+    $sheet->setCellValue('C16', $data->total_rekreasi);
+    $sheet->setCellValue('C17', $data->total_angsuran);
 
     $sheet->setCellValue('A19', "KEADAAN BULAN INI");
     $sheet->setCellValue('A21', "Simpanan Pokok");
@@ -452,7 +459,7 @@ class Laporan extends CI_Controller {
     $sheet->setCellValue('C24', $data->pendidikan);
     $sheet->setCellValue('C25', $data->rekreasi);
     $sheet->setCellValue('C26', $data->angsuran);
-    
+
     // Apply style header yang telah kita buat tadi ke masing-masing kolom header
     // $spreadsheet->getActiveSheet()->getStyle('A4:Z70')->getNumberFormat()->setFormatCode('#,##');
     $sheet->getStyle('A1')->applyFromArray($style_col);
@@ -462,77 +469,23 @@ class Laporan extends CI_Controller {
     $sheet->getStyle('A4')->applyFromArray($namaa);
 
     $sheet->getStyle('C5:C8')->applyFromArray($biodata);
-   
-    
-    // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
-    $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
-    // Lakukan looping pada variabel siswa
-    //     $sheet->setCellValue('A'.$numrow, $no);
-    //     $sheet->setCellValue('B'.$numrow, $data->nik);
-    //     $sheet->setCellValue('C'.$numrow, $data->nama_anggota);
-    //     $sheet->setCellValue('D'.$numrow, $data->nama_sekolah);
-        
-    //     if (!isset($data->sim_pokok)) {
-    //       $sheet->setCellValue('E'.$numrow, '0');
-    //       $sheet->setCellValue('F'.$numrow, '0');
-    //       $sheet->setCellValue('G'.$numrow, '0');
-    //       $sheet->setCellValue('H'.$numrow, '0');
-    //       $sheet->setCellValue('I'.$numrow, '0');
-    //       $sheet->setCellValue('J'.$numrow, '0');
-    //       $sheet->setCellValue('K'.$numrow, '0');
-    //       $sheet->setCellValue('L'.$numrow, '0');
-    //       $sheet->setCellValue('M'.$numrow, '0');
-    //     } else {
-    //       $sheet->setCellValue('E'.$numrow, $data->sim_pokok);
-    //       $sheet->setCellValue('F'.$numrow, $data->sim_wajib);
-    //       $sheet->setCellValue('G'.$numrow, $data->thr);
-    //       $sheet->setCellValue('H'.$numrow, $data->pendidikan);
-    //       $sheet->setCellValue('I'.$numrow, $data->rekreasi);
-    //       $sheet->setCellValue('J'.$numrow, $data->angsuran);
-    //       $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
-    //       $sheet->setCellValue('L'.$numrow, $data->jasa);
-
-    //       $sheet->setCellValue('M'.$numrow, $data->sim_pokok + $data->sim_wajib + $data->thr + $data->pendidikan + $data->rekreasi + $data->angsuran + $data->angsuran_barang + $data->jasa);
-
-
-    //     }
-          
-        
-       
-        // $sheet->setCellValue('J'.$numrow, $data->jumlah_angsuran);
-        // // $sheet->setCellValue('K'.$numrow, $data->angsuran_barang);
-        // $sheet->setCellValue('L'.$numrow, $data->jasa);
-
-        
-   
+   // Set baris pertama untuk isi tabel adalah baris ke 4
 
       $sheet->getStyle('A'.$numrow)->getFont()->setSize(9);
       $sheet->getStyle('B'.$numrow)->getFont()->setSize(9);
       $sheet->getStyle('C'.$numrow)->getFont()->setSize(9);
-      // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
       $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
       $sheet->getStyle('B'.$numrow)->applyFromArray($style_row);
       $sheet->getStyle('C'.$numrow)->applyFromArray($style_row);
-      // $sheet->getStyle('D'.$numrow)->applyFromArray($style_row);
-      // $sheet->getStyle('E'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('F'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('G'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('H'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('I'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('J'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('K'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('L'.$numrow)->applyFromArray($style_row);
-      //   $sheet->getStyle('M'.$numrow)->applyFromArray($style_row);
       
-      $no++; // Tambah 1 setiap kali looping
-      $numrow++; // Tambah 1 setiap kali looping
-    
+     // Tambah 1 setiap kali loopin
     // Set width kolom
     $sheet->getColumnDimension('A')->setWidth(21); // Set width kolom A
     $sheet->getColumnDimension('B')->setWidth(3); // Set width kolom B
     $sheet->getColumnDimension('C')->setWidth(20); // Set width kolom C
     $sheet->getColumnDimension('D')->setWidth(25); // Set width kolom D
+    $no++; // Tambah 1 setiap kali looping
+    $numrow++; 
   }
     // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
     $sheet->getDefaultRowDimension()->setRowHeight(-1);
@@ -549,6 +502,11 @@ class Laporan extends CI_Controller {
     header('Cache-Control: max-age=0');
     $writer = new Xlsx($spreadsheet);
     $writer->save('php://output');
+  }
+
+  public function cetakAnggota($tgl){
+      $data['anggota'] = $this->Model_home->getAllData($tgl)->result();
+      $this->load->view('cetakAnggota', $data);
   }
 
 }

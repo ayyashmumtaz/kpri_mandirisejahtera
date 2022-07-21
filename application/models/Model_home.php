@@ -27,6 +27,7 @@ public function getAllData($tgl)
     $this->db->from('anggota');
     $this->db->join('sekolah', 'anggota.id_sekolah = sekolah.id');
     $this->db->join('riwayat_tabungan', 'anggota.id_anggota = riwayat_tabungan.id_anggota');
+    $this->db->join('tabungan', 'anggota.id_anggota = tabungan.id_anggota');
     $this->db->where($where);
     $query = $this->db->get();
     return $query;
