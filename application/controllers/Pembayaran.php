@@ -21,7 +21,7 @@ class Pembayaran extends CI_Controller {
 
     public function input()
     {
-        $data['anggota'] = $this->Model_home->getDataAnggota();
+        $data['anggota'] = $this->Model_home->getAllSekolah();
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('input_pembayaran', $data);
@@ -45,6 +45,45 @@ class Pembayaran extends CI_Controller {
         $this->Model_home->input_data($data, 'pembayaran');
         $this->session->set_flashdata('order_berhasil', ' ');
         redirect('Angsuran/input');
+    }
+
+    public function proses_input_sekolah()
+    {
+        $id_iuran = $this->input->post('id_iuran');
+        $id_sekolah = $this->input->post('id_sekolah');
+        $tgl_simpan = $this->input->post('tgl_simpan');
+        $tahun = $this->input->post('tahun');
+        $iurank3s = $this->input->post('iurank3s');
+        $o2sn = $this->input->post('o2sn');
+        $pramuka = $this->input->post('pramuka');
+        $operasik3s = $this->input->post('operasik3s');
+        $elok = $this->input->post('elok');
+
+        $data = array(
+            'id_iuran' => $id_iuran,
+            'id_sekolah' => $id_sekolah,
+            'tgl_simpan' => $tgl_simpan,
+            'tahun' => $tahun,
+            'iurank3s' => $iurank3s,
+            'o2sn' => $o2sn,
+            'pramuka' => $pramuka,
+            'operasik3s' => $operasik3s,
+            'elok' => $elok
+        );
+        $this->Model_home->input_data($data, 'tagihan_sekolah');
+        $this->session->set_flashdata('order_berhasil', ' ');
+        redirect('Pembayaran/input');
+    }
+
+
+
+
+    public function jsonGetSekolah()
+    {
+            $id = $this->input->get('id_sekolah');
+            $cari = $this->Model_home->jsonSekolah($id);
+            echo json_encode($cari);
+      
     }
 }
 

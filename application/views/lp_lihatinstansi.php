@@ -22,6 +22,7 @@
     <table id="s" class="display nowrap" style="width:100%">
         <thead>
             <tr>
+                <th>NIK</th>
                 <th>Nama Anggota</th>
                 <th>Total</th>
          
@@ -88,6 +89,7 @@
             ?>
           
             <tr>
+                <td><?= $b->nik;?></td>
               
                 <td><?= $b->nama_anggota;?>
              </td>

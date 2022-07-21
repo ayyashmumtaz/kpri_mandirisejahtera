@@ -4,7 +4,7 @@
                let timerInterval
 Swal.fire({
   title: 'Input Berhasil!',
-  html: 'Pinjaman telah di input!',
+  html: 'Tagihan telah di input!',
   icon: 'success',
   timer: 1500,
   
@@ -22,21 +22,21 @@ Swal.fire({
            
         <?php endif ?>
 <div class="container">
-<h3>Input Pembayaran</h3>
+<h3>Input Tagihan Sekolah</h3>
   <br>
-         <form action="<?= site_url('Pembayaran/proses_input');?>" method="post" enctype="multipart/form-data">
+         <form action="<?= site_url('Pembayaran/proses_input_sekolah');?>" method="post" enctype="multipart/form-data">
    <div class="row">
 
   
 
 
-          <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_pembayaran" readonly>
+          <input type="hidden" class="form-control" value="<?= uniqid();?>" name="id_iuran" readonly>
    
 
       <div class="col-md-4">
         <div class="form-group">
           <label for="last">BULAN INPUT</label>
-          <select class="form-control" name="tgl_bayar">
+          <select class="form-control" name="tgl_simpan">
             <option value="Januari">Januari</option>
             <option value="Februari">Februari</option>
             <option value="Maret">Maret</option>
@@ -52,15 +52,38 @@ Swal.fire({
           </select>
         </div>
       </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+        <label for="last">Tahun</label>
+          <select class="form-control" name="tahun">
+            <option value="<?= date('Y');?>"><?= date('Y');?></option>
+            <option value="<?= date('Y')+1;?>"><?= date('Y')+1;?></option>
+            <option value="<?= date('Y')+2;?>"><?= date('Y')+2;?></option>
+            <option value="<?= date('Y')+3;?>"><?= date('Y')+3;?></option>
+            <option value="<?= date('Y')+4;?>"><?= date('Y')+4;?></option>
+            <option value="<?= date('Y')+5;?>"><?= date('Y')+5;?></option>
+            <option value="<?= date('Y')+6;?>"><?= date('Y')+6;?></option>
+            <option value="<?= date('Y')+7;?>"><?= date('Y')+7;?></option>
+            <option value="<?= date('Y')+8;?>"><?= date('Y')+8;?></option>
+            <option value="<?= date('Y')+9;?>"><?= date('Y')+9;?></option>
+            <option value="<?= date('Y')+10;?>"><?= date('Y')+10;?></option>
+            <option value="<?= date('Y')+11;?>"><?= date('Y')+11;?></option>
+            <option value="<?= date('Y')+12;?>"><?= date('Y')+12;?></option>
+      
+           
+          </select>
+        </div>
+      </div>
       
 
       <div class="col-md-5">
         <div class="form-group">
-          <label for="last">NAMA ANGGOTA</label>
-           <select class="form-control" name="id_anggota">
-            <option selected disabled>-- PILIH ANGGOTA --</option>
+          <label for="last">NAMA SEKOLAH</label>
+           <select class="form-control" name="id_sekolah" id="id_sekolah" onchange="return autofill();">
+            <option selected disabled>-- PILIH SEKOLAH --</option>
                   <?php foreach($anggota as $i){ ?>
-                  <option value="<?php echo $i['id_anggota']; ?>"><?php echo $i['nama_anggota']; ?></option>
+                  <option value="<?php echo $i['id']; ?>"><?php echo $i['nama_sekolah']; ?></option>
                   <?php } ?></select>
         </div>
       </div>
@@ -70,17 +93,42 @@ Swal.fire({
 
 
   
-     <div class="col-md-5">
+     <div class="col-md-3">
         <div class="form-group">
-          <label for="last">Jumlah Yang Ingin Dibayar</label>
-          <input type="number" name="jumlah" class="form-control">
-        </div>
-
-        
-      
-        
-
+          <label for="last">Iuran K3S dan Majalah</label>
+          <input type="number" name="iurank3s" id="" class="form-control">
+                  </div>
       </div>
+   
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">OS2N</label>
+          <input type="number" name="o2sn" class="form-control">
+                  </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Pramuka</label>
+          <input type="number" name="pramuka" class="form-control">
+                  </div>
+      </div>
+   
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Operasional K3S</label>
+          <input type="number" name="operasik3s" class="form-control">
+                  </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="last">Elok</label>
+          <input type="number" name="elok" class="form-control">
+                  </div>
+      </div>
+   
+   
    
 
       </div>
@@ -91,6 +139,40 @@ Swal.fire({
 <button class="btn btn-lg btn-primary">Submit</button>
 </div>
 </form>
+
+<script>
+  function autofill(){
+        var id = document.getElementById('id_sekolah').value;
+        $.ajax({
+          
+                       url:"<?php echo site_url();?>/Pembayaran/jsonGetSekolah",
+                       data:'&id_sekolah='+id,
+                       success:function(data){
+                           var hasil = JSON.parse(data);  
+                     
+                     
+            $.each(hasil, function(key,val){ 
+              console.log(hasil);
+
+         
+                document.getElementById('iurank3s').value=hasil[0].iurank3s;
+
+       
+
+                if(document.getElementById('jenis_angsuran').value == "2") 
+        {
+          document.getElementById('jumlah_angsuran').value=hasil[0].total_angsuran;
+        }
+
+                                
+                     
+                });
+            }
+                   });
+                 
+    }
+    
+</script>
 
 
 

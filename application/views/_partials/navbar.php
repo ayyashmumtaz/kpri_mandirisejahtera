@@ -59,6 +59,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= site_url('Simpanan/input');?>">Input Data Simpanan</a>
+                        <a class="collapse-item" href="<?= site_url('Pembayaran/input');?>">Input Tagihan Sekolah</a>
                         <a class="collapse-item" href="<?= site_url('Angsuran/input');?>">Input Angsuran</a>
                         <a class="collapse-item" href="<?= site_url('Simpanan/data');?>">Data Simpanan</a>
                         <a class="collapse-item" href="<?= site_url('Pembayaran');?>">Data Pembayaran</a>

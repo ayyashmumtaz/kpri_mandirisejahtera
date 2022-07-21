@@ -92,6 +92,16 @@ public function jsonAnggota($id)
   return $query->result();
 }
 
+public function jsonSekolah($id)
+{
+ $this->db->select('*');
+  $this->db->from('sekolah');
+  $this->db->join('tagihan_sekolah', 'sekolah.id = tagihan_sekolah.id_sekolah', 'left');
+  $this->db->where('sekolah.id', $id);
+  $query = $this->db->get();
+  return $query->result();
+}
+
 public function jsonAnggotaOnly($id)
 {
  $this->db->select('*');

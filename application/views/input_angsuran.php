@@ -22,7 +22,7 @@ Swal.fire({
            
         <?php endif ?>
 <div class="container">
-  <h3>Input Pinjaman</h3>
+  <h3>Input Angsuran</h3>
   <br>
          <form action="<?= site_url('Pembayaran/proses_input');?>" method="post" enctype="multipart/form-data">
    <div class="row">
