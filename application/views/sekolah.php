@@ -24,6 +24,7 @@
                 <th>ID Sekolah</th>
                 <th>Nama Sekolah</th>
                 <th>Alamat</th>
+                <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -36,8 +37,37 @@
                 <td><?= $b->id?></td>
                 <td><?=$b->nama_sekolah?></td>
                 <td><?=$b->alamat?></td>
+                <td>
+                  <?php switch ($b->status) {
+                    case '1':
+                      echo "Aktif";
+                      break;
+                    case '0':
+                      echo "Nonaktif";
+                      break;
+                    
+                    default:
+                      echo "Tidak ada status";
+                      break;
+                  } ?>
+                </td>
+                <td>
+                <?php switch ($b->status) {
+                    case '1':
+                      echo "<a class='btn btn-sm btn-danger' style='margin-bottom: 2%;' href='".site_url('Sekolah/nonaktif/').$b->id."'>Nonaktifkan</a>";
+                      break;
+                    case '0':
+                      echo "<a class='btn btn-sm btn-success' style='margin-bottom: 2%;' href='".site_url('Sekolah/aktifkan/').$b->id."'>Aktifkan</a>";
+                      break;
+                    
+                    default:
+                      echo "Tidak ada status";
+                      break;
+                  } ?>
 
-                  <td>
+
+                   
+                
                   <a class="btn btn-sm btn-primary" style="margin-bottom: 2%;" href="<?= site_url('Sekolah/edit/'). $b->id;?>">Edit</a>
 
 
@@ -55,7 +85,7 @@
 Swal.fire({
   title: 'Berhasil!',
   html: 'Data berhasil di Update!',
-  icon: 'success',
+  icon: 'success'
   timer: 1500,
   
   didOpen: () => {

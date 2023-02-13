@@ -82,6 +82,40 @@ class Sekolah extends CI_Controller {
 		redirect('Sekolah');
 	}
 
+	public function nonaktif($id)
+	{
+		$status = 0;
+
+		$data = array(
+			'status' => $status
+		);
+
+		$where = array(
+			'id' => $id
+		);
+
+		$this->Model_home->update_data($where,$data,'sekolah');
+		$this->session->set_flashdata('order_berhasil', ' ');
+		redirect('Sekolah');
+	}
+
+	public function aktifkan($id)
+	{
+		$status = 1;
+
+		$data = array(
+			'status' => $status
+		);
+
+		$where = array(
+			'id' => $id
+		);
+
+		$this->Model_home->update_data($where,$data,'sekolah');
+		$this->session->set_flashdata('order_berhasil', ' ');
+		redirect('Sekolah');
+	}
+
 }
 
 /* End of file sekolah.php */

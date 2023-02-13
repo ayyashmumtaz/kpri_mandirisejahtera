@@ -49,6 +49,7 @@
       <td>:</td>
       <td><?=$b->tgl_simpan?></td>
   </tr>
+  
   <tr>
       <td colspan="2"><strong><u>Keadaan Bulan Lalu</u><strong></td>
   </tr>
@@ -98,7 +99,34 @@
                     }?></td>
   </tr>
   <tr>
-      <td>Sisa Pinjaman</td>
+      <td>Pinjaman Bulan Lalu</td>
+      <td>:</td>
+        <td><?php if ($b->angsuran == null) {
+                        echo "Rp. 0";
+                    }else{
+                        echo "Rp. ".number_format($b->total_angsuran+$b->total_jasa,0,',','.');
+                    }?></td>
+  </tr>
+  <tr>
+      <td>Pinjaman Bulan Ini</td>
+      <td>:</td>
+        <td><?php if ($b->angsuran == null) {
+                        echo "Rp. 0";
+                    }else{
+                        echo "Rp. ".number_format($b->total_angsuran+$b->total_jasa,0,',','.');
+                    }?></td>
+  </tr>
+  <tr>
+      <td>Cicil/Tutup Pinjaman</td>
+      <td>:</td>
+        <td><?php if ($b->angsuran == null) {
+                        echo "Rp. 0";
+                    }else{
+                        echo "Rp. ".number_format($b->total_angsuran+$b->total_jasa,0,',','.');
+                    }?></td>
+  </tr>
+  <tr>
+      <td>Total Pinjaman</td>
       <td>:</td>
         <td><?php if ($b->angsuran == null) {
                         echo "Rp. 0";
@@ -110,13 +138,11 @@
       <td colspan="2"><strong><u>Tagihan Bulan Ini</u><strong></td>
   </tr>
     <tr>
-        <td>Simpanan Pokok</td>
-        <td>:</td>
-            <td><?php if ($b->sim_pokok == null) {
-                            echo "Rp. 0";
-                        }else{
-                            echo "Rp. ".number_format($b->sim_pokok,0,',','.');
-                        }?></td>
+    <tr>
+      <td>Simpanan Pokok</td>
+      <td>:</td>
+      <td>Rp. 0</td>
+  </tr>
   <tr>
       <td>Simpanan Wajib</td>
       <td>:</td>
@@ -153,15 +179,7 @@
                         echo "Rp. ".number_format($b->rekreasi,0,',','.');
                     }?></td>
   </tr>
-  <tr>
-      <td>Angsuran Pokok</td>
-      <td>:</td>
-        <td><?php if ($b->angsuran == null) {
-                        echo "Rp. 0";
-                    }else{
-                        echo "Rp. ".number_format($b->angsuran,0,',','.');
-                    }?></td>
-  </tr>
+
     <tr>
         <td>Jasa</td>
         <td>:</td>
